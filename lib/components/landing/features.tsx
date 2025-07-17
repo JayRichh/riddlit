@@ -1,11 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Code, Database, LayoutGrid, Paintbrush, Server, ShieldCheck, Terminal } from 'lucide-react'
-import Link from 'next/link'
+import { Calendar, Clock, Target, Trophy, Users, Zap } from 'lucide-react'
 import React from 'react'
 
-import { Button } from '@/lib/components/ui/button'
 import { cn } from '@/lib/utils'
 
 interface FeatureProps {
@@ -16,81 +14,133 @@ interface FeatureProps {
 
 const features: FeatureProps[] = [
   {
-    title: 'AI-First Development',
+    title: 'Smart Scheduling',
     description:
-      'Optimized for AI pair programming with Cursor, including built-in guidelines for AI tools to understand the codebase.',
-    icon: Terminal,
+      'Set riddles to run daily, weekly, or on custom timelines. Automated delivery keeps teams engaged.',
+    icon: Calendar,
   },
   {
-    title: 'Production Ready',
+    title: 'Flexible Teams',
     description:
-      'Enterprise-grade architecture with scalable patterns, built for deployment on Vercel with full environment setup.',
-    icon: Server,
+      'Invite coworkers, manage requests, set team limits. Build the perfect solving squad.',
+    icon: Users,
   },
   {
-    title: 'Secure Authentication',
-    description:
-      'Complete multi-tenant user management with Clerk, protected routes, and role-based access control.',
-    icon: ShieldCheck,
+    title: 'Real-Time Leaderboards',
+    description: 'Track individuals or teams. Rankings update live as answers come in.',
+    icon: Trophy,
   },
   {
-    title: 'Type-Safe Database',
+    title: 'One Answer. One Shot.',
     description:
-      'Strongly typed database operations with Drizzle ORM and PostgreSQL on Supabase for reliable data handling.',
-    icon: Database,
+      'Each riddle allows a single response — make it count. No second chances, just pure thinking.',
+    icon: Target,
   },
   {
-    title: 'Modern UI Components',
-    description:
-      'Beautiful, responsive interfaces with Tailwind, Shadcn/ui, and Framer Motion animations.',
-    icon: Paintbrush,
+    title: 'Multiple Choice or Freeform',
+    description: 'Admins choose the riddle format. You focus on solving, not guessing the system.',
+    icon: Zap,
   },
   {
-    title: 'Server Components',
+    title: 'Time-Limited Challenges',
     description:
-      'Next.js App Router with React Server Components for optimal performance and data loading patterns.',
-    icon: LayoutGrid,
+      'Each riddle lives for 24 hours. Miss it, and you will have to wait for the next one.',
+    icon: Clock,
   },
 ]
 
+const HowItWorksStep = ({
+  step,
+  title,
+  description,
+}: {
+  step: number
+  title: string
+  description: string
+}) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: step * 0.1 }}
+    className="space-y-4 text-center"
+  >
+    <div className="bg-primary/10 mx-auto flex h-12 w-12 items-center justify-center rounded-full">
+      <span className="text-primary text-lg font-bold">{step}</span>
+    </div>
+    <h3 className="text-xl font-semibold">{title}</h3>
+    <p className="text-muted-foreground">{description}</p>
+  </motion.div>
+)
+
 const FeatureCard = ({ title, description, icon: Icon }: FeatureProps) => (
   <motion.div
-    whileHover={{ scale: 1.03 }}
-    className="bg-card flex flex-col items-center rounded-lg border p-6 text-center shadow-xs transition-all hover:shadow-md"
+    whileHover={{ scale: 1.02 }}
+    className="bg-card rounded-xl border p-6 transition-all duration-300 hover:shadow-lg"
   >
-    <div className="bg-primary/10 mb-4 rounded-full p-3">
-      <Icon className="text-primary size-6" />
+    <div className="flex items-start gap-4">
+      <div className="bg-primary/10 shrink-0 rounded-lg p-3">
+        <Icon className="text-primary size-6" />
+      </div>
+      <div>
+        <h3 className="mb-2 text-lg font-semibold">{title}</h3>
+        <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
+      </div>
     </div>
-    <h3 className="mb-2 text-xl font-medium">{title}</h3>
-    <p className="text-muted-foreground text-sm">{description}</p>
   </motion.div>
 )
 
 export const FeaturesSection = () => {
   return (
-    <div className="container mx-auto px-4 pt-0 pb-8">
-      {
-        <>
+    <section className="px-4 py-24">
+      <div className="container mx-auto max-w-7xl">
+        {/* How It Works Section */}
+        <div id="how-it-works" className="mb-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-4 text-center"
+            className="mb-16 text-center"
           >
-            <h2
-              className={cn(
-                'mb-4 text-3xl font-bold tracking-tight text-balance sm:text-4xl md:text-5xl',
-              )}
-            >
-              Enterprise-Grade Features
-            </h2>
-            <p className="text-muted-foreground mx-auto max-w-[800px] text-balance md:text-xl">
-              A comprehensive stack designed for rapid development with AI tools. Includes
-              authentication, database integration, and beautiful UI components.
+            <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">How It Works</h2>
+            <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
+              Three simple steps to sharper thinking and stronger teams.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-3">
+            <HowItWorksStep
+              step={1}
+              title="Join or Create a Team"
+              description="Get your crew together or join one already solving."
+            />
+            <HowItWorksStep
+              step={2}
+              title="Solve Daily Riddles"
+              description="Each day unlocks a new challenge, live for 24 hours."
+            />
+            <HowItWorksStep
+              step={3}
+              title="Track Progress & Climb the Leaderboard"
+              description="Points, streaks, and rankings for friendly competition."
+            />
+          </div>
+        </div>
+
+        {/* Key Features Section */}
+        <div className="mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-16 text-center"
+          >
+            <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">Key Features</h2>
+            <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
+              Everything you need for engaging team challenges and friendly competition.
+            </p>
+          </motion.div>
+
+          <div className="grid gap-6 md:grid-cols-2">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -102,27 +152,100 @@ export const FeaturesSection = () => {
               </motion.div>
             ))}
           </div>
+        </div>
 
+        {/* Screenshots Preview Section */}
+        <div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="mt-16 flex flex-col items-center"
+            transition={{ duration: 0.5 }}
+            className="mb-16 text-center"
           >
-            <Button asChild size="lg">
-              <Link
-                href="https://github.com/materialize-labs/ai-optimized-starter-app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center"
-              >
-                <Code className="mr-2 size-4" />
-                View on GitHub
-              </Link>
-            </Button>
+            <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">See It in Action</h2>
+            <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
+              Clean interfaces designed for focus and clarity.
+            </p>
           </motion.div>
-        </>
-      }
-    </div>
+
+          <div className="grid gap-8 md:grid-cols-2">
+            {/* Mock Screenshot 1 - Riddle Detail */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="from-primary/5 to-primary/10 rounded-xl border bg-gradient-to-br p-6"
+            >
+              <div className="bg-background space-y-4 rounded-lg p-6">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-semibold">Daily Riddle #247</h3>
+                  <div className="bg-primary/10 text-primary rounded-full px-3 py-1 text-sm">
+                    23h 42m left
+                  </div>
+                </div>
+                <p className="text-muted-foreground">
+                  I speak without a mouth and hear without ears. I have no body, but I come alive
+                  with wind. What am I?
+                </p>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                    <span className="text-sm">156 teams solving</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-blue-500"></div>
+                    <span className="text-sm">42 answers submitted</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Mock Screenshot 2 - Team Leaderboard */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="from-primary/5 to-primary/10 rounded-xl border bg-gradient-to-br p-6"
+            >
+              <div className="bg-background space-y-4 rounded-lg p-6">
+                <h3 className="font-semibold">Team Leaderboard</h3>
+                <div className="space-y-3">
+                  {[
+                    { name: 'Code Warriors', score: '2,450', streak: '🔥 12' },
+                    { name: 'Mind Hackers', score: '2,180', streak: '🔥 8' },
+                    { name: 'Logic Squad', score: '1,920', streak: '🔥 5' },
+                  ].map((team, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-muted/50 flex items-center justify-between rounded-lg p-3"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div
+                          className={cn(
+                            'flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold',
+                            idx === 0
+                              ? 'bg-yellow-500 text-white'
+                              : idx === 1
+                                ? 'bg-gray-400 text-white'
+                                : 'bg-amber-600 text-white',
+                          )}
+                        >
+                          {idx + 1}
+                        </div>
+                        <span className="font-medium">{team.name}</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <span className="text-sm">{team.streak}</span>
+                        <span className="font-mono text-sm">{team.score}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }

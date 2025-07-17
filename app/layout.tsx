@@ -14,8 +14,9 @@ import { cn } from '@/lib/utils'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Materialize Labs AI-Optimized Starter App',
-  description: 'A full-stack web app template.',
+  title: 'Riddlix | Challenge Minds. Build Teams. Rise Up.',
+  description:
+    'Daily team riddles for sharper thinking and smarter teams. Join or create teams, solve challenges, and climb the leaderboard.',
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

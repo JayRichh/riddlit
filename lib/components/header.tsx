@@ -2,6 +2,7 @@
 
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
 import { Menu, Rocket, X } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
@@ -41,8 +42,15 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-(--breakpoint-2xl) items-center justify-between p-4">
         <div className="flex items-center space-x-2 hover:cursor-pointer hover:opacity-80">
-          <Link href="/" className="text-xl font-bold">
-            AI Optimized Starter App
+          <Link href="/" className="flex items-center gap-2">
+            <Image
+              src="/riddlix_logo.png"
+              alt="Riddlix Logo"
+              width={32}
+              height={32}
+              className="rounded-md dark:invert"
+            />
+            <span className="text-xl font-bold">Riddlix</span>
           </Link>
         </div>
 
@@ -64,7 +72,7 @@ export default function Header() {
             <ThemeSwitcher />
 
             <SignedIn>
-              <Link href="/contacts">
+              <Link href="/dashboard">
                 <Button className="gap-2">
                   <Rocket className="size-4" />
                   Go to App
@@ -101,7 +109,7 @@ export default function Header() {
             <SignedIn>
               <div>
                 <Link
-                  href="/contacts"
+                  href="/dashboard"
                   className="text-foreground/80 hover:text-foreground block py-2 text-sm font-medium"
                   onClick={toggleMenu}
                 >

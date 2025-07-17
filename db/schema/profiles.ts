@@ -5,13 +5,22 @@ Updated: Removed Stripe-related fields
 </ai_context>
 */
 
-import { pgEnum, pgTable, text, timestamp } from 'drizzle-orm/pg-core'
+import { integer, pgEnum, pgTable, text, timestamp } from 'drizzle-orm/pg-core'
 
 export const membershipEnum = pgEnum('membership', ['free', 'pro'])
 
 export const profilesTable = pgTable('profiles', {
   userId: text('user_id').primaryKey().notNull(),
   membership: membershipEnum('membership').notNull().default('free'),
+
+  // Enhanced fields for gamification
+  displayName: text('display_name'),
+  avatarUrl: text('avatar_url'),
+  totalPoints: integer('total_points').default(0).notNull(),
+  riddlesSolved: integer('riddles_solved').default(0).notNull(),
+  currentStreak: integer('current_streak').default(0).notNull(),
+  longestStreak: integer('longest_streak').default(0).notNull(),
+
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at')
     .defaultNow()

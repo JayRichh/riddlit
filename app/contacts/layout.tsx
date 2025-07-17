@@ -8,8 +8,8 @@ import { SidebarProvider } from '@/lib/components/ui/sidebar'
 import { ContactsNavbar } from './_components/contacts-navbar'
 
 export const metadata = {
-  title: 'Contacts | AI-Optimized Starter App',
-  description: 'Manage your contacts',
+  title: 'Contacts | Riddlix',
+  description: 'Manage your contacts and team connections',
 }
 
 export default async function ContactsLayout({ children }: { children: React.ReactNode }) {
