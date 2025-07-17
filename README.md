@@ -1,8 +1,12 @@
-# 🧩 Riddlix
+# ![](<riddlix sm.png>) Riddlix
+
+![RiddleHero](image-1.png)
 
 **Challenge Minds. Build Teams.**
 
 Riddlix is a team-based riddle-solving platform that brings teams together through daily challenges, friendly competition, and collaborative problem-solving. Built for organizations looking to engage their teams in fun, intellectual challenges while building stronger connections.
+
+![RiddleOverview](image.png)
 
 ## 🎯 Features
 
