@@ -14,9 +14,70 @@ import { cn } from '@/lib/utils'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Riddlix | Challenge Minds. Build Teams. Rise Up.',
+  metadataBase: new URL('https://riddlix.vercel.app'),
+  title: {
+    default: 'Riddlix | Challenge Minds. Build Teams. Rise Up.',
+    template: '%s | Riddlix',
+  },
   description:
     'Daily team riddles for sharper thinking and smarter teams. Join or create teams, solve challenges, and climb the leaderboard.',
+  keywords: [
+    'riddles',
+    'team building',
+    'puzzles',
+    'challenges',
+    'leaderboard',
+    'team competition',
+    'brain teasers',
+    'mind games',
+    'problem solving',
+    'team collaboration',
+  ],
+  authors: [{ name: 'Riddlix' }],
+  creator: 'Riddlix',
+  publisher: 'Riddlix',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://riddlix.vercel.app',
+    title: 'Riddlix | Challenge Minds. Build Teams. Rise Up.',
+    description:
+      'Daily team riddles for sharper thinking and smarter teams. Join or create teams, solve challenges, and climb the leaderboard.',
+    images: [
+      {
+        url: '/riddlix_logo.png',
+        width: 800,
+        height: 600,
+        alt: 'Riddlix - Challenge Minds. Build Teams. Rise Up.',
+      },
+    ],
+    siteName: 'Riddlix',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Riddlix | Challenge Minds. Build Teams. Rise Up.',
+    description:
+      'Daily team riddles for sharper thinking and smarter teams. Join or create teams, solve challenges, and climb the leaderboard.',
+    images: ['/riddlix_logo.png'],
+  },
+  alternates: {
+    canonical: 'https://riddlix.vercel.app',
+  },
+  other: {
+    'theme-color': '#000000',
+    'msapplication-TileColor': '#000000',
+  },
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -33,6 +94,80 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
+        <head>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Organization',
+                '@id': 'https://riddlix.vercel.app/#organization',
+                name: 'Riddlix',
+                url: 'https://riddlix.vercel.app',
+                logo: {
+                  '@type': 'ImageObject',
+                  url: 'https://riddlix.vercel.app/riddlix_logo.png',
+                  width: 800,
+                  height: 600,
+                },
+                description:
+                  'Daily team riddles for sharper thinking and smarter teams. Join or create teams, solve challenges, and climb the leaderboard.',
+                foundingDate: '2025',
+                serviceType: [
+                  'Team Building',
+                  'Brain Training',
+                  'Puzzle Games',
+                  'Educational Games',
+                ],
+                applicationCategory: 'GameApplication',
+                operatingSystem: 'Web Browser',
+              }),
+            }}
+          />
+
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'WebSite',
+                '@id': 'https://riddlix.vercel.app/#website',
+                url: 'https://riddlix.vercel.app',
+                name: 'Riddlix',
+                description: 'Daily team riddles for sharper thinking and smarter teams',
+                publisher: {
+                  '@id': 'https://riddlix.vercel.app/#organization',
+                },
+                inLanguage: 'en-US',
+              }),
+            }}
+          />
+
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'WebApplication',
+                name: 'Riddlix',
+                url: 'https://riddlix.vercel.app',
+                description:
+                  'Daily team riddles for sharper thinking and smarter teams. Join or create teams, solve challenges, and climb the leaderboard.',
+                applicationCategory: 'GameApplication',
+                operatingSystem: 'Web Browser',
+                author: {
+                  '@type': 'Organization',
+                  name: 'Riddlix',
+                },
+                offers: {
+                  '@type': 'Offer',
+                  price: '0',
+                  priceCurrency: 'USD',
+                },
+              }),
+            }}
+          />
+        </head>
         <body
           className={cn(
             'bg-background mx-auto min-h-screen w-full scroll-smooth antialiased',

@@ -9,7 +9,49 @@ import { RiddlesNavbar } from './_components/riddles-navbar'
 
 export const metadata = {
   title: 'Riddles | Riddlix',
-  description: 'Browse and solve riddles on Riddlix',
+  description:
+    'Browse and solve challenging riddles on Riddlix. Test your problem-solving skills with brain teasers, puzzles, and mind games designed for team collaboration.',
+  keywords: [
+    'riddles',
+    'puzzles',
+    'brain teasers',
+    'problem solving',
+    'mind games',
+    'challenges',
+    'logic puzzles',
+    'team riddles',
+  ],
+  openGraph: {
+    title: 'Riddles | Riddlix',
+    description:
+      'Browse and solve challenging riddles on Riddlix. Test your problem-solving skills with brain teasers, puzzles, and mind games designed for team collaboration.',
+    type: 'website',
+    url: 'https://riddlix.vercel.app/riddles',
+    images: [
+      {
+        url: '/riddlix_logo.png',
+        width: 800,
+        height: 600,
+        alt: 'Riddlix Riddles - Brain Teasers and Puzzles',
+      },
+    ],
+    siteName: 'Riddlix',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Riddles | Riddlix',
+    description:
+      'Browse and solve challenging riddles on Riddlix. Test your problem-solving skills with brain teasers, puzzles, and mind games designed for team collaboration.',
+    images: ['/riddlix_logo.png'],
+  },
+  alternates: {
+    canonical: 'https://riddlix.vercel.app/riddles',
+  },
+  robots: {
+    index: false,
+    follow: false,
+  },
 }
 
 export default async function RiddlesLayout({ children }: { children: React.ReactNode }) {
