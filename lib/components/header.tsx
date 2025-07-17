@@ -1,3 +1,11 @@
+/*
+<ai_context>
+Landing page header component for the Riddlix app.
+Provides navigation and user controls for the landing page.
+Updated with notification bell for signed-in users (already has dark mode toggle).
+</ai_context>
+*/
+
 'use client'
 
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
@@ -7,6 +15,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 import { Button } from '@/lib/components/ui/button'
+import { NotificationBell } from '@/lib/components/ui/notification-bell'
 import ThemeSwitcher from '@/lib/components/utilities/theme-switcher'
 
 interface NavLink {
@@ -42,16 +51,17 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-(--breakpoint-2xl) items-center justify-between p-4">
         <div className="flex items-center space-x-2 hover:cursor-pointer hover:opacity-80">
-          <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/riddlix_logo.png"
-              alt="Riddlix Logo"
-              width={32}
-              height={32}
-              className="rounded-md dark:invert"
-            />
-            <span className="text-xl font-bold">Riddlix</span>
-          </Link>
+          <Image
+            src="/riddlix_text.png"
+            alt="Riddlix Logo"
+            onClick={() => (window.location.href = '/')}
+            width={150}
+            height={48}
+            className="-my-12 rounded-md object-contain transition-all duration-300 hover:translate-y-1 hover:scale-105 hover:cursor-pointer dark:invert"
+            style={{
+              objectPosition: 'center',
+            }}
+          />
         </div>
 
         <nav className="absolute left-1/2 hidden -translate-x-1/2 space-x-2 font-semibold md:flex">
@@ -72,6 +82,7 @@ export default function Header() {
             <ThemeSwitcher />
 
             <SignedIn>
+              <NotificationBell />
               <Link href="/dashboard">
                 <Button className="gap-2">
                   <Rocket className="size-4" />
@@ -107,7 +118,8 @@ export default function Header() {
         <nav className="bg-background border-b p-4 md:hidden">
           <div className="space-y-4">
             <SignedIn>
-              <div>
+              <div className="flex items-center space-x-2">
+                <NotificationBell />
                 <Link
                   href="/dashboard"
                   className="text-foreground/80 hover:text-foreground block py-2 text-sm font-medium"

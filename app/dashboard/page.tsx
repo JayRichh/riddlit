@@ -4,8 +4,8 @@ import { Suspense } from 'react'
 
 import { getDashboardSummary } from '@/lib/actions/db/leaderboard-actions'
 
-import { DashboardContent } from './_components/dashboard-content'
 import { DashboardSkeleton } from './_components/dashboard-skeleton'
+import { ImprovedDashboardContent } from './_components/improved-dashboard-content'
 
 export default async function DashboardPage() {
   const { userId } = await auth()
@@ -15,15 +15,9 @@ export default async function DashboardPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-      </div>
-
-      <Suspense fallback={<DashboardSkeleton />}>
-        <DashboardContentWrapper />
-      </Suspense>
-    </div>
+    <Suspense fallback={<DashboardSkeleton />}>
+      <DashboardContentWrapper />
+    </Suspense>
   )
 }
 
@@ -38,5 +32,5 @@ async function DashboardContentWrapper() {
     )
   }
 
-  return <DashboardContent data={summaryResult.data} />
+  return <ImprovedDashboardContent data={summaryResult.data} />
 }

@@ -50,3 +50,30 @@ export async function getProfileByUserId(userId: string): Promise<ActionState<Se
     return { isSuccess: false, message: 'Failed to get profile' }
   }
 }
+
+export async function updateProfile(
+  userId: string,
+  data: Partial<InsertProfile>,
+): Promise<ActionState<SelectProfile>> {
+  try {
+    const [updatedProfile] = await db
+      .update(profilesTable)
+      .set({ ...data, updatedAt: new Date() })
+      .where(eq(profilesTable.userId, userId))
+      .returning()
+
+    if (!updatedProfile) {
+      return { isSuccess: false, message: 'Profile not found' }
+    }
+
+    return {
+      isSuccess: true,
+      message: 'Profile updated successfully',
+      data: updatedProfile,
+    }
+  } catch (error) {
+    console.error('Error updating profile:', error)
+
+    return { isSuccess: false, message: 'Failed to update profile' }
+  }
+}

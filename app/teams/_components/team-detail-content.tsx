@@ -157,10 +157,12 @@ export function TeamDetailContent({ team, members }: TeamDetailContentProps) {
               <Button variant="outline" onClick={loadJoinRequests} disabled={loadingRequests}>
                 {loadingRequests ? 'Loading...' : 'Join Requests'}
               </Button>
-              <Button variant="outline" className="gap-2">
-                <Settings className="h-4 w-4" />
-                Settings
-              </Button>
+              <Link href={`/teams/${team.slug}/settings`}>
+                <Button variant="outline" className="gap-2">
+                  <Settings className="h-4 w-4" />
+                  Settings
+                </Button>
+              </Link>
             </div>
           )}
         </div>
@@ -324,7 +326,10 @@ export function TeamDetailContent({ team, members }: TeamDetailContentProps) {
             <CardTitle>Quick Actions</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-3 md:grid-cols-3">
+            <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+              <Link href={`/teams/${team.slug}/riddles/create`}>
+                <Button className="w-full">Create Team Riddle</Button>
+              </Link>
               <Link href={`/riddles?team=${team.id}`}>
                 <Button variant="outline" className="w-full">
                   View Team Riddles

@@ -3,8 +3,9 @@ import { redirect } from 'next/navigation'
 import { Suspense } from 'react'
 
 import { getActiveRiddles } from '@/lib/actions/db/riddles-actions'
+import { getUserTeams } from '@/lib/actions/db/teams-actions'
 
-import { RiddlesContent } from './_components/riddles-content'
+import { ImprovedRiddlesContent } from './_components/improved-riddles-content'
 import { RiddlesSkeleton } from './_components/riddles-skeleton'
 
 export default async function RiddlesPage() {
@@ -15,22 +16,23 @@ export default async function RiddlesPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Active Riddles</h1>
-      </div>
-
-      <Suspense fallback={<RiddlesSkeleton />}>
-        <RiddlesContentWrapper />
-      </Suspense>
-    </div>
+    <Suspense fallback={<RiddlesSkeleton />}>
+      <RiddlesContentWrapper />
+    </Suspense>
   )
 }
 
 async function RiddlesContentWrapper() {
-  const riddlesResult = await getActiveRiddles()
+  // Fetch public riddles (no team filter)
+  const publicRiddlesResult = await getActiveRiddles()
 
-  if (!riddlesResult.isSuccess) {
+  // Fetch user teams
+  const userTeamsResult = await getUserTeams()
+
+  // Fetch team riddles - we'll get all team riddles for user's teams
+  const teamRiddlesResult = await getActiveRiddles('user-teams')
+
+  if (!publicRiddlesResult.isSuccess) {
     return (
       <div className="flex h-96 items-center justify-center">
         <p className="text-muted-foreground">Failed to load riddles</p>
@@ -38,5 +40,15 @@ async function RiddlesContentWrapper() {
     )
   }
 
-  return <RiddlesContent riddles={riddlesResult.data} />
+  const publicRiddles = publicRiddlesResult.data
+  const userTeams = userTeamsResult.isSuccess ? userTeamsResult.data : []
+  const teamRiddles = teamRiddlesResult.isSuccess ? teamRiddlesResult.data : []
+
+  return (
+    <ImprovedRiddlesContent
+      publicRiddles={publicRiddles}
+      teamRiddles={teamRiddles}
+      userTeams={userTeams}
+    />
+  )
 }

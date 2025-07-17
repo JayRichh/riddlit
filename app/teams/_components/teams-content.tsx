@@ -108,7 +108,14 @@ export function TeamsContent({ userTeams, publicTeams }: TeamsContentProps) {
               <Card key={team.id} className="transition-shadow hover:shadow-md">
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg">{team.name}</CardTitle>
+                    <CardTitle className="text-lg">
+                      <Link
+                        href={`/teams/${team.slug}`}
+                        className="hover:text-primary transition-colors"
+                      >
+                        {team.name}
+                      </Link>
+                    </CardTitle>
                     <div className="flex items-center gap-2">
                       {team.role === 'owner' && <Crown className="h-4 w-4 text-yellow-500" />}
                       {team.isPublic ? (
@@ -171,7 +178,14 @@ export function TeamsContent({ userTeams, publicTeams }: TeamsContentProps) {
                 <Card key={team.id} className="transition-shadow hover:shadow-md">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-lg">{team.name}</CardTitle>
+                      <CardTitle className="text-lg">
+                        <Link
+                          href={`/teams/${team.slug}`}
+                          className="hover:text-primary transition-colors"
+                        >
+                          {team.name}
+                        </Link>
+                      </CardTitle>
                       <Globe className="h-4 w-4 text-green-500" />
                     </div>
                     <CardDescription className="line-clamp-2">

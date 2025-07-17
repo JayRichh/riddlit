@@ -9,7 +9,19 @@ User controls moved back to the navbar.
 'use client'
 
 import { useUser } from '@clerk/nextjs'
-import { Contact, Crown, Home, Puzzle, Trophy, User, Users } from 'lucide-react'
+import {
+  BarChart3,
+  Bell,
+  CheckCircle,
+  Contact,
+  Home,
+  Puzzle,
+  Settings,
+  Trophy,
+  User,
+  Users,
+  XCircle,
+} from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -71,9 +83,29 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   const adminNavItems = [
     {
-      title: 'Admin',
+      title: 'Pending Riddles',
       href: '/admin',
-      icon: Crown,
+      icon: Settings,
+    },
+    {
+      title: 'Approved Riddles',
+      href: '/admin/approved',
+      icon: CheckCircle,
+    },
+    {
+      title: 'Rejected Riddles',
+      href: '/admin/rejected',
+      icon: XCircle,
+    },
+    {
+      title: 'Notifications',
+      href: '/admin/notifications',
+      icon: Bell,
+    },
+    {
+      title: 'Analytics',
+      href: '/admin/analytics',
+      icon: BarChart3,
     },
   ]
 
@@ -84,21 +116,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       {...props}
     >
       <SidebarHeader className="p-3">
-        <div className="flex items-center px-2 py-1">
-          <div className="flex items-center gap-2">
-            <Image
-              src="/riddlix_logo.png"
-              alt="Riddlix Logo"
-              width={24}
-              height={24}
-              className="rounded-md dark:invert"
-            />
-            <div className="text-sm font-semibold">Riddlix</div>
-          </div>
+        <div className="flex items-center gap-2">
+          <Image
+            src="/riddlix_text.png"
+            alt="Riddlix Logo"
+            width={128}
+            onClick={() => (window.location.href = '/')}
+            height={48}
+            className="rounded-md transition-all duration-300 hover:translate-y-1 hover:scale-105 hover:cursor-pointer dark:invert"
+          />
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="px-3 py-2">
+      <SidebarContent className="px-3">
         <div className="space-y-1">
           <p className="text-muted-foreground px-2 py-1.5 text-xs font-medium">Navigation</p>
 
@@ -128,14 +158,15 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <p className="text-muted-foreground px-2 py-1.5 text-xs font-medium">Admin</p>
               </div>
               {adminNavItems.map((item) => {
-                const isActive = pathname?.startsWith(item.href)
+                const isActive =
+                  item.href === '/admin' ? pathname === '/admin' : pathname?.startsWith(item.href)
 
                 return (
                   <Link key={item.href} href={item.href}>
                     <Button
                       variant={isActive ? 'secondary' : 'ghost'}
                       size="sm"
-                      className="w-full justify-start gap-2"
+                      className="w-full justify-start gap-2 pl-6"
                     >
                       <item.icon className="size-4" />
                       {item.title}

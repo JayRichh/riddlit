@@ -13,6 +13,7 @@ import {
   SelectRiddleResponse,
 } from '@/db/schema/riddles'
 import { teamMembershipsTable } from '@/db/schema/teams'
+import { createRiddleNotification } from '@/lib/actions/db/notification-actions'
 import { ActionState } from '@/lib/types/server-action'
 
 // Helper function to generate slug from riddle title
@@ -88,6 +89,12 @@ export async function createRiddle(
       })
       .returning()
 
+    // Create notification for riddle creation
+    await createRiddleNotification(userId, 'riddle_created', newRiddle.title, {
+      riddleId: newRiddle.id,
+      riddleSlug: newRiddle.slug,
+    })
+
     return {
       isSuccess: true,
       message: 'Riddle created successfully',
@@ -132,6 +139,13 @@ export async function suggestRiddle(
         status: 'suggested',
       })
       .returning()
+
+    // Create notification for riddle suggestion
+    await createRiddleNotification(userId, 'riddle_created', newRiddle.title, {
+      riddleId: newRiddle.id,
+      riddleSlug: newRiddle.slug,
+      status: 'suggested',
+    })
 
     return {
       isSuccess: true,
@@ -206,7 +220,78 @@ export async function getActiveRiddles(
   teamId?: string,
 ): Promise<ActionState<(SelectRiddle & { responseCount: number })[]>> {
   try {
+    const { userId } = await auth()
+
+    if (!userId) {
+      return { isSuccess: false, message: 'Authentication required' }
+    }
+
     const now = new Date()
+
+    if (teamId === 'user-teams') {
+      // Get riddles for all user's teams - use a join approach
+      const riddles = await db
+        .select({
+          id: riddlesTable.id,
+          title: riddlesTable.title,
+          slug: riddlesTable.slug,
+          description: riddlesTable.description,
+          question: riddlesTable.question,
+          imageUrl: riddlesTable.imageUrl,
+          answerType: riddlesTable.answerType,
+          correctAnswer: riddlesTable.correctAnswer,
+          multipleChoiceOptions: riddlesTable.multipleChoiceOptions,
+          category: riddlesTable.category,
+          difficulty: riddlesTable.difficulty,
+          basePoints: riddlesTable.basePoints,
+          availableFrom: riddlesTable.availableFrom,
+          availableUntil: riddlesTable.availableUntil,
+          timezone: riddlesTable.timezone,
+          status: riddlesTable.status,
+          createdBy: riddlesTable.createdBy,
+          suggestedBy: riddlesTable.suggestedBy,
+          approvedBy: riddlesTable.approvedBy,
+          rejectionReason: riddlesTable.rejectionReason,
+          teamId: riddlesTable.teamId,
+          createdAt: riddlesTable.createdAt,
+          updatedAt: riddlesTable.updatedAt,
+          responseCount: sql<number>`count(${riddleResponsesTable.id})`,
+        })
+        .from(riddlesTable)
+        .innerJoin(teamMembershipsTable, eq(riddlesTable.teamId, teamMembershipsTable.teamId))
+        .leftJoin(riddleResponsesTable, eq(riddlesTable.id, riddleResponsesTable.riddleId))
+        .where(
+          and(
+            eq(riddlesTable.status, 'active'),
+            lte(riddlesTable.availableFrom, now),
+            gte(riddlesTable.availableUntil, now),
+            eq(teamMembershipsTable.userId, userId),
+          ),
+        )
+        .groupBy(riddlesTable.id)
+        .orderBy(riddlesTable.availableFrom)
+
+      return {
+        isSuccess: true,
+        message: 'Team riddles retrieved successfully',
+        data: riddles,
+      }
+    }
+
+    // For specific team or public riddles
+    let whereConditions = and(
+      eq(riddlesTable.status, 'active'),
+      lte(riddlesTable.availableFrom, now),
+      gte(riddlesTable.availableUntil, now),
+    )
+
+    if (teamId) {
+      // Get riddles for specific team
+      whereConditions = and(whereConditions, eq(riddlesTable.teamId, teamId))
+    } else {
+      // Get public riddles (no team)
+      whereConditions = and(whereConditions, sql`${riddlesTable.teamId} IS NULL`)
+    }
 
     const riddles = await db
       .select({
@@ -237,14 +322,7 @@ export async function getActiveRiddles(
       })
       .from(riddlesTable)
       .leftJoin(riddleResponsesTable, eq(riddlesTable.id, riddleResponsesTable.riddleId))
-      .where(
-        and(
-          eq(riddlesTable.status, 'active'),
-          lte(riddlesTable.availableFrom, now),
-          gte(riddlesTable.availableUntil, now),
-          teamId ? eq(riddlesTable.teamId, teamId) : sql`${riddlesTable.teamId} IS NULL`,
-        ),
-      )
+      .where(whereConditions)
       .groupBy(riddlesTable.id)
       .orderBy(riddlesTable.availableFrom)
 
@@ -534,6 +612,16 @@ export async function approveRiddle(id: string): Promise<ActionState<SelectRiddl
       .where(eq(riddlesTable.id, id))
       .returning()
 
+    // Notify the original author about approval
+    if (approvedRiddle && approvedRiddle.suggestedBy) {
+      await createRiddleNotification(
+        approvedRiddle.suggestedBy,
+        'riddle_created',
+        approvedRiddle.title,
+        { riddleId: approvedRiddle.id, riddleSlug: approvedRiddle.slug, status: 'approved' },
+      )
+    }
+
     return {
       isSuccess: true,
       message: 'Riddle approved successfully',
@@ -571,6 +659,21 @@ export async function rejectRiddle(id: string, reason: string): Promise<ActionSt
       })
       .where(eq(riddlesTable.id, id))
       .returning()
+
+    // Notify the original author about rejection
+    if (rejectedRiddle && rejectedRiddle.suggestedBy) {
+      await createRiddleNotification(
+        rejectedRiddle.suggestedBy,
+        'riddle_created',
+        rejectedRiddle.title,
+        {
+          riddleId: rejectedRiddle.id,
+          riddleSlug: rejectedRiddle.slug,
+          status: 'rejected',
+          reason,
+        },
+      )
+    }
 
     return {
       isSuccess: true,
@@ -733,6 +836,21 @@ export async function submitResponse(
         submittedAt: now,
       })
       .returning()
+
+    // Create notification for riddle solving
+    if (isCorrect) {
+      await createRiddleNotification(userId, 'riddle_solved', riddle.title, {
+        riddleId: riddle.id,
+        riddleSlug: riddle.slug,
+        pointsEarned,
+      })
+    } else {
+      await createRiddleNotification(userId, 'riddle_failed', riddle.title, {
+        riddleId: riddle.id,
+        riddleSlug: riddle.slug,
+        answer,
+      })
+    }
 
     return {
       isSuccess: true,

@@ -2,22 +2,26 @@
 <ai_context>
 Dashboard navbar component for the Riddlix app.
 Provides navigation and user controls for the dashboard section.
+Updated with notification bell and dark mode toggle.
 </ai_context>
 */
 
 'use client'
 
 import { UserButton } from '@clerk/nextjs'
-import { Bell, Plus } from 'lucide-react'
+import { Plus } from 'lucide-react'
 import Link from 'next/link'
 
+import { Breadcrumb } from '@/lib/components/ui/breadcrumb'
 import { Button } from '@/lib/components/ui/button'
+import { NotificationBell } from '@/lib/components/ui/notification-bell'
+import ThemeSwitcher from '@/lib/components/utilities/theme-switcher'
 
 export function DashboardNavbar() {
   return (
     <header className="border-border bg-background flex h-16 items-center justify-between border-b px-6">
       <div className="flex items-center space-x-4">
-        <h1 className="text-xl font-semibold">Dashboard</h1>
+        <Breadcrumb />
       </div>
 
       <div className="flex items-center space-x-4">
@@ -28,10 +32,8 @@ export function DashboardNavbar() {
           </Button>
         </Link>
 
-        <Button variant="ghost" size="sm">
-          <Bell className="h-4 w-4" />
-        </Button>
-
+        <NotificationBell />
+        <ThemeSwitcher />
         <UserButton afterSignOutUrl="/" />
       </div>
     </header>

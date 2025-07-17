@@ -1,44 +1,27 @@
+/*
+<ai_context>
+Admin navbar component for the Riddlix app.
+Provides navigation and actions for the admin section.
+Updated with notification bell and dark mode toggle.
+</ai_context>
+*/
+
 'use client'
 
 import { UserButton } from '@clerk/nextjs'
-import { Bell, CheckCircle, Database, Plus, Settings, XCircle } from 'lucide-react'
+import { Plus } from 'lucide-react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 
+import { Breadcrumb } from '@/lib/components/ui/breadcrumb'
 import { Button } from '@/lib/components/ui/button'
+import { NotificationBell } from '@/lib/components/ui/notification-bell'
+import ThemeSwitcher from '@/lib/components/utilities/theme-switcher'
 
 export function AdminNavbar() {
-  const pathname = usePathname()
-
-  const navItems = [
-    { href: '/admin', label: 'Pending', icon: Settings },
-    { href: '/admin/approved', label: 'Approved', icon: CheckCircle },
-    { href: '/admin/rejected', label: 'Rejected', icon: XCircle },
-    { href: '/admin/analytics', label: 'Analytics', icon: Database },
-  ]
-
   return (
     <header className="border-border bg-background flex h-16 items-center justify-between border-b px-6">
       <div className="flex items-center space-x-4">
-        <h1 className="text-xl font-semibold">Admin Panel</h1>
-        <div className="flex items-center space-x-2">
-          {navItems.map((item) => {
-            const Icon = item.icon
-            return (
-              <Button
-                key={item.href}
-                variant={pathname === item.href ? 'default' : 'ghost'}
-                size="sm"
-                asChild
-              >
-                <Link href={item.href}>
-                  <Icon className="mr-2 h-4 w-4" />
-                  {item.label}
-                </Link>
-              </Button>
-            )
-          })}
-        </div>
+        <Breadcrumb />
       </div>
 
       <div className="flex items-center space-x-4">
@@ -49,10 +32,8 @@ export function AdminNavbar() {
           </Button>
         </Link>
 
-        <Button variant="ghost" size="sm">
-          <Bell className="h-4 w-4" />
-        </Button>
-
+        <NotificationBell />
+        <ThemeSwitcher />
         <UserButton afterSignOutUrl="/" />
       </div>
     </header>

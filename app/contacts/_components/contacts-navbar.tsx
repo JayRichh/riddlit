@@ -1,10 +1,20 @@
+/*
+<ai_context>
+Contacts navbar component for the Riddlix app.
+Provides navigation and actions for the contacts section.
+Updated with notification bell (already has dark mode toggle).
+</ai_context>
+*/
+
 'use client'
 
 import { UserButton } from '@clerk/nextjs'
-import { Contact, Menu } from 'lucide-react'
+import { Menu } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
+import { Breadcrumb } from '@/lib/components/ui/breadcrumb'
 import { Button } from '@/lib/components/ui/button'
+import { NotificationBell } from '@/lib/components/ui/notification-bell'
 import { useSidebar } from '@/lib/components/ui/sidebar'
 import ThemeSwitcher from '@/lib/components/utilities/theme-switcher'
 
@@ -35,12 +45,12 @@ export function ContactsNavbar() {
           </Button>
 
           <div className="flex items-center gap-2">
-            <Contact className="text-primary size-5" />
-            <h1 className="text-lg font-semibold">Contacts</h1>
+            <Breadcrumb />
           </div>
         </div>
 
         <div className="flex items-center space-x-3">
+          <NotificationBell />
           <ThemeSwitcher />
           <UserButton afterSignOutUrl="/" />
         </div>

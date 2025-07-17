@@ -14,6 +14,7 @@ import {
   teamMembershipsTable,
   teamsTable,
 } from '@/db/schema/teams'
+import { createTeamNotification } from '@/lib/actions/db/notification-actions'
 import { ActionState } from '@/lib/types/server-action'
 
 // Helper function to generate slug from team name
@@ -187,7 +188,11 @@ export async function getUserTeams(): Promise<
         createdAt: teamsTable.createdAt,
         updatedAt: teamsTable.updatedAt,
         role: teamMembershipsTable.role,
-        memberCount: sql<number>`count(${teamMembershipsTable.id}) OVER (PARTITION BY ${teamsTable.id})`,
+        memberCount: sql<number>`(
+          SELECT COUNT(*) 
+          FROM ${teamMembershipsTable} tm 
+          WHERE tm.team_id = ${teamsTable.id}
+        )`,
       })
       .from(teamsTable)
       .innerJoin(teamMembershipsTable, eq(teamsTable.id, teamMembershipsTable.teamId))
@@ -342,6 +347,28 @@ export async function removeMemberFromTeam(
       .delete(teamMembershipsTable)
       .where(and(eq(teamMembershipsTable.teamId, teamId), eq(teamMembershipsTable.userId, userId)))
 
+    // Get team info and notify the removed member
+    const team = await db.query.teams.findFirst({
+      where: eq(teamsTable.id, teamId),
+    })
+
+    if (team) {
+      if (currentUserId === userId) {
+        // User left the team themselves
+        await createTeamNotification(userId, 'team_left', team.name, {
+          teamId: team.id,
+          teamSlug: team.slug,
+        })
+      } else {
+        // User was removed by owner
+        await createTeamNotification(userId, 'team_member_left', team.name, {
+          teamId: team.id,
+          teamSlug: team.slug,
+          removedBy: currentUserId,
+        })
+      }
+    }
+
     return {
       isSuccess: true,
       message: 'Member removed successfully',
@@ -392,6 +419,19 @@ export async function createJoinRequest(
         userId,
       })
       .returning()
+
+    // Get team info and notify the team owner
+    const team = await db.query.teams.findFirst({
+      where: eq(teamsTable.id, teamId),
+    })
+
+    if (team) {
+      await createTeamNotification(team.ownerId, 'team_join_request', team.name, {
+        teamId: team.id,
+        teamSlug: team.slug,
+        requesterId: userId,
+      })
+    }
 
     return {
       isSuccess: true,
@@ -505,6 +545,18 @@ export async function approveJoinRequest(requestId: string): Promise<ActionState
         .where(eq(teamJoinRequestsTable.id, requestId))
     })
 
+    // Get team info and notify the requester
+    const team = await db.query.teams.findFirst({
+      where: eq(teamsTable.id, request.teamId),
+    })
+
+    if (team) {
+      await createTeamNotification(request.userId, 'team_request_approved', team.name, {
+        teamId: team.id,
+        teamSlug: team.slug,
+      })
+    }
+
     return {
       isSuccess: true,
       message: 'Join request approved successfully',
@@ -553,6 +605,18 @@ export async function rejectJoinRequest(requestId: string): Promise<ActionState<
         reviewedBy: userId,
       })
       .where(eq(teamJoinRequestsTable.id, requestId))
+
+    // Get team info and notify the requester
+    const team = await db.query.teams.findFirst({
+      where: eq(teamsTable.id, request.teamId),
+    })
+
+    if (team) {
+      await createTeamNotification(request.userId, 'team_request_rejected', team.name, {
+        teamId: team.id,
+        teamSlug: team.slug,
+      })
+    }
 
     return {
       isSuccess: true,

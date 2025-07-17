@@ -5,7 +5,7 @@ Updated: Removed Stripe-related fields
 </ai_context>
 */
 
-import { integer, pgEnum, pgTable, text, timestamp } from 'drizzle-orm/pg-core'
+import { boolean, integer, pgEnum, pgTable, text, timestamp } from 'drizzle-orm/pg-core'
 
 export const membershipEnum = pgEnum('membership', ['free', 'pro'])
 
@@ -20,6 +20,11 @@ export const profilesTable = pgTable('profiles', {
   riddlesSolved: integer('riddles_solved').default(0).notNull(),
   currentStreak: integer('current_streak').default(0).notNull(),
   longestStreak: integer('longest_streak').default(0).notNull(),
+
+  // Global notification settings (specific preferences are in notification_preferences table)
+  notificationsEnabled: boolean('notifications_enabled').default(true).notNull(),
+  emailNotificationsEnabled: boolean('email_notifications_enabled').default(false).notNull(),
+  pushNotificationsEnabled: boolean('push_notifications_enabled').default(false).notNull(),
 
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at')

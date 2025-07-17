@@ -521,6 +521,7 @@ export async function getDashboardSummary(): Promise<
       userId: string
       displayName: string | null
       riddleTitle: string
+      riddleSlug: string
       pointsEarned: number
       submittedAt: Date
     }[]
@@ -570,6 +571,7 @@ export async function getDashboardSummary(): Promise<
         userId: riddleResponsesTable.userId,
         displayName: profilesTable.displayName,
         riddleTitle: riddlesTable.title,
+        riddleSlug: riddlesTable.slug,
         pointsEarned: riddleResponsesTable.pointsEarned,
         submittedAt: riddleResponsesTable.submittedAt,
       })

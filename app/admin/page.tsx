@@ -1,4 +1,5 @@
 import { auth } from '@clerk/nextjs/server'
+import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { Suspense } from 'react'
 
@@ -49,7 +50,14 @@ async function PendingRiddlesWrapper() {
               <Badge variant="outline">{riddle.category}</Badge>
               <Badge variant="secondary">{riddle.difficulty}</Badge>
             </div>
-            <CardTitle className="line-clamp-2 text-lg">{riddle.title}</CardTitle>
+            <CardTitle className="line-clamp-2 text-lg">
+              <Link
+                href={`/riddles/${riddle.slug}`}
+                className="hover:text-primary transition-colors"
+              >
+                {riddle.title}
+              </Link>
+            </CardTitle>
             <CardDescription className="line-clamp-3">
               {riddle.description || riddle.question}
             </CardDescription>
@@ -58,7 +66,7 @@ async function PendingRiddlesWrapper() {
             <div className="text-muted-foreground mb-2 text-sm">
               <span>Created: {new Date(riddle.createdAt).toLocaleDateString()}</span>
             </div>
-            <AdminActions riddleId={riddle.id} onSuccess={() => window.location.reload()} />
+            <AdminActions riddleId={riddle.id} />
           </CardContent>
         </Card>
       ))}

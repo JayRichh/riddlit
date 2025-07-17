@@ -104,7 +104,7 @@ export function CreateRiddleForm() {
       if (result.isSuccess) {
         setSuccess('Riddle suggestion submitted successfully! It will be reviewed by moderators.')
         setTimeout(() => {
-          router.push(`/riddles/${result.data.id}`)
+          router.push(`/riddles/${result.data.slug}`)
         }, 2000)
       } else {
         setError(result.message)

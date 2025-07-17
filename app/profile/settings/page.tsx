@@ -1,6 +1,8 @@
 import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 
+import { NotificationPreferences } from './_components/notification-preferences'
+
 export default async function ProfileSettingsPage() {
   const { userId } = await auth()
 
@@ -15,12 +17,13 @@ export default async function ProfileSettingsPage() {
       </div>
 
       <div className="grid gap-6">
+        <NotificationPreferences userId={userId} />
+
         <div className="rounded-lg border p-6">
-          <h2 className="mb-4 text-xl font-semibold">Coming Soon</h2>
-          <p className="text-muted-foreground">
-            Profile settings and customization options will be available in a future update. This
-            section will allow you to manage your account preferences, notification settings, and
-            privacy options.
+          <h2 className="mb-4 text-xl font-semibold">More Settings Coming Soon</h2>
+          <p className="text-muted-foreground mb-4">
+            Additional profile settings and customization options will be available in future
+            updates.
           </p>
         </div>
 
@@ -33,16 +36,16 @@ export default async function ProfileSettingsPage() {
           </div>
 
           <div className="rounded-lg border p-4">
-            <h3 className="mb-2 font-medium">Notifications</h3>
+            <h3 className="mb-2 font-medium">Privacy</h3>
             <p className="text-muted-foreground text-sm">
-              Configure email and push notification preferences.
+              Control your profile visibility and data sharing settings.
             </p>
           </div>
 
           <div className="rounded-lg border p-4">
-            <h3 className="mb-2 font-medium">Privacy</h3>
+            <h3 className="mb-2 font-medium">Appearance</h3>
             <p className="text-muted-foreground text-sm">
-              Control your profile visibility and data sharing settings.
+              Customize your theme, layout, and visual preferences.
             </p>
           </div>
         </div>

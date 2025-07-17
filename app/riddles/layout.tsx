@@ -5,7 +5,7 @@ import { getProfileByUserId } from '@/lib/actions/db/profiles'
 import { AppSidebar } from '@/lib/components/sidebar/app-sidebar'
 import { SidebarProvider } from '@/lib/components/ui/sidebar'
 
-import { RiddlesNavbar } from './_components/riddles-navbar'
+import { ImprovedRiddlesNavbar } from './_components/improved-riddles-navbar'
 
 export const metadata = {
   title: 'Riddles | Riddlix',
@@ -72,7 +72,7 @@ export default async function RiddlesLayout({ children }: { children: React.Reac
       <div className="flex h-screen w-full">
         <AppSidebar />
         <div className="flex min-w-0 flex-1 flex-col">
-          <RiddlesNavbar />
+          <ImprovedRiddlesNavbar />
           <main className="flex-1 overflow-auto p-6">{children}</main>
         </div>
       </div>
