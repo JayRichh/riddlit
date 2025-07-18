@@ -159,12 +159,16 @@ export function Breadcrumb({
           <Fragment key={item.href}>
             <div className="flex items-center">
               {Icon && <Icon className="mr-2 h-4 w-4" />}
-              {isLast ? (
+              {isLast && !Icon ? (
                 <span className="text-foreground font-medium">{item.label}</span>
               ) : (
                 <Link
                   href={item.href}
-                  className="text-muted-foreground hover:text-foreground font-medium transition-colors"
+                  className={`font-medium transition-colors ${
+                    isLast
+                      ? 'text-foreground hover:text-foreground/80'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
                 >
                   {item.label}
                 </Link>

@@ -9,10 +9,11 @@ import NextBundleAnalyzer from '@next/bundle-analyzer'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [{ hostname: 'localhost' }],
+    remotePatterns: [{ hostname: 'localhost' }, { hostname: '*.public.blob.vercel-storage.com' }],
+    formats: ['image/webp', 'image/avif'],
   },
-  experimental: {
-    turbo: {},
+  turbopack: {
+    // Turbopack configuration - moved from experimental.turbo
   },
 }
 

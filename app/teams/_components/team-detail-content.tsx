@@ -9,7 +9,7 @@ Handles team member management, join requests, and team settings.
 
 import { useUser } from '@clerk/nextjs'
 import { formatDistanceToNow } from 'date-fns'
-import { Crown, Globe, Lock, Settings, UserCheck, UserMinus, Users, X } from 'lucide-react'
+import { Crown, Edit, Globe, Lock, Settings, UserCheck, UserMinus, Users, X } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { toast } from 'sonner'
@@ -23,6 +23,8 @@ import {
 import { Badge } from '@/lib/components/ui/badge'
 import { Button } from '@/lib/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/lib/components/ui/card'
+
+import { TeamEditForm } from './team-edit-form'
 
 type Team = {
   id: string
@@ -63,6 +65,7 @@ export function TeamDetailContent({ team, members }: TeamDetailContentProps) {
   >([])
   const [showJoinRequests, setShowJoinRequests] = useState(false)
   const [loadingRequests, setLoadingRequests] = useState(false)
+  const [isEditing, setIsEditing] = useState(false)
 
   const currentUserMembership = members.find((member) => member.userId === user?.id)
   const isOwner = currentUserMembership?.role === 'owner'
@@ -129,6 +132,20 @@ export function TeamDetailContent({ team, members }: TeamDetailContentProps) {
     }
   }
 
+  if (isEditing) {
+    return (
+      <TeamEditForm
+        team={team}
+        members={members}
+        onCancel={() => setIsEditing(false)}
+        onSuccess={() => {
+          setIsEditing(false)
+          // onSuccess will refresh the page
+        }}
+      />
+    )
+  }
+
   return (
     <div className="space-y-6">
       {/* Team Header */}
@@ -154,6 +171,10 @@ export function TeamDetailContent({ team, members }: TeamDetailContentProps) {
           </div>
           {isOwner && (
             <div className="flex items-center gap-2">
+              <Button variant="outline" onClick={() => setIsEditing(true)} className="gap-2">
+                <Edit className="h-4 w-4" />
+                Edit Team
+              </Button>
               <Button variant="outline" onClick={loadJoinRequests} disabled={loadingRequests}>
                 {loadingRequests ? 'Loading...' : 'Join Requests'}
               </Button>
@@ -344,6 +365,23 @@ export function TeamDetailContent({ team, members }: TeamDetailContentProps) {
                 Team Stats
               </Button>
             </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Riddle Request for Non-Members */}
+      {!isMember && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Request a Riddle</CardTitle>
+            <CardDescription>
+              Not a team member? You can still contribute by requesting a riddle for this team.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Link href={`/teams/${team.slug}/riddles/request`}>
+              <Button className="w-full">Request a Riddle for This Team</Button>
+            </Link>
           </CardContent>
         </Card>
       )}

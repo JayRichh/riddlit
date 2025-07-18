@@ -1,7 +1,8 @@
 'use client'
 
+import { useUser } from '@clerk/nextjs'
 import { formatDistanceToNow } from 'date-fns'
-import { AlertCircle, Calendar, CheckCircle, Clock, Trophy, Users } from 'lucide-react'
+import { AlertCircle, Calendar, CheckCircle, Clock, Edit, Trophy, Users } from 'lucide-react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useState, useTransition } from 'react'
@@ -14,17 +15,24 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/lib
 import { Label } from '@/lib/components/ui/label'
 import { Textarea } from '@/lib/components/ui/textarea'
 
+import { EditRiddleForm } from './edit-riddle-form'
+
 interface RiddleDetailContentProps {
   riddle: SelectRiddle & { responseCount: number }
   userId: string
 }
 
-export function RiddleDetailContent({ riddle }: RiddleDetailContentProps) {
+export function RiddleDetailContent({ riddle, userId }: RiddleDetailContentProps) {
+  const { user } = useUser()
   const [response, setResponse] = useState('')
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
+  const [isEditing, setIsEditing] = useState(false)
   const router = useRouter()
+
+  // Check if user can edit this riddle
+  const canEdit = user?.id === riddle.createdBy || user?.publicMetadata?.membership === 'pro'
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
@@ -82,11 +90,32 @@ export function RiddleDetailContent({ riddle }: RiddleDetailContentProps) {
     })
   }
 
+  if (isEditing) {
+    return (
+      <EditRiddleForm
+        riddle={riddle}
+        onCancel={() => setIsEditing(false)}
+        onSuccess={() => {
+          setIsEditing(false)
+          router.refresh()
+        }}
+      />
+    )
+  }
+
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="space-y-2">
-        <h1 className="text-3xl font-bold">{riddle.title}</h1>
+        <div className="flex items-center justify-between">
+          <h1 className="text-3xl font-bold">{riddle.title}</h1>
+          {canEdit && (
+            <Button variant="outline" onClick={() => setIsEditing(true)} className="gap-2">
+              <Edit className="h-4 w-4" />
+              Edit Riddle
+            </Button>
+          )}
+        </div>
         <div className="flex items-center gap-2">
           <Badge className={getDifficultyColor(riddle.difficulty)}>{riddle.difficulty}</Badge>
           <Badge variant="outline">{riddle.category}</Badge>

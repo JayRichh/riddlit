@@ -23,6 +23,9 @@ export const notificationEventEnum = pgEnum('notification_event', [
   'riddle_solved',
   'riddle_failed',
   'daily_riddle_available',
+  'riddle_request',
+  'riddle_request_approved',
+  'riddle_request_rejected',
 
   // Team events
   'team_joined',

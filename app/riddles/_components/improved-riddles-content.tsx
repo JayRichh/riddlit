@@ -4,7 +4,7 @@ import { formatDistanceToNow } from 'date-fns'
 import { Clock, Eye, Filter, Search, Trophy, Users } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { SelectRiddle } from '@/db/schema/riddles'
 import { SelectTeam } from '@/db/schema/teams'
@@ -19,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/lib/components/ui/select'
+import { useUserPreferences } from '@/lib/hooks/use-user-preferences'
 
 import { RefinedViewSelector } from './refined-view-selector'
 
@@ -33,12 +34,46 @@ export function ImprovedRiddlesContent({
   teamRiddles,
   userTeams,
 }: ImprovedRiddlesContentProps) {
-  const [view, setView] = useState<'public' | 'team'>('public')
-  const [selectedTeamId, setSelectedTeamId] = useState<string | null>(null)
+  const {
+    preferences,
+    isLoaded,
+    updateRiddlesView,
+    updateSelectedTeamId,
+    updateFilterPreferences,
+  } = useUserPreferences()
+
+  // Local state for UI elements not persisted
   const [searchTerm, setSearchTerm] = useState('')
-  const [categoryFilter, setCategoryFilter] = useState('all')
-  const [difficultyFilter, setDifficultyFilter] = useState('all')
   const [showFilters, setShowFilters] = useState(false)
+
+  // Use persistent preferences once loaded
+  const view = preferences.riddlesView
+  const selectedTeamId = preferences.selectedTeamId
+  const categoryFilter = preferences.filterPreferences.category
+  const difficultyFilter = preferences.filterPreferences.difficulty
+
+  const setView = (newView: 'public' | 'team') => {
+    updateRiddlesView(newView)
+  }
+
+  const setSelectedTeamId = (teamId: string | null) => {
+    updateSelectedTeamId(teamId)
+  }
+
+  const setCategoryFilter = (category: string) => {
+    updateFilterPreferences({ category })
+  }
+
+  const setDifficultyFilter = (difficulty: string) => {
+    updateFilterPreferences({ difficulty })
+  }
+
+  // Initialize team selection on first load with teams view
+  useEffect(() => {
+    if (isLoaded && view === 'team' && userTeams.length > 0 && selectedTeamId === null) {
+      // Stay with null (All My Teams) as default - don't auto-select first team
+    }
+  }, [isLoaded, view, userTeams, selectedTeamId])
 
   // Get the current riddles based on view
   const currentRiddles = useMemo(() => {

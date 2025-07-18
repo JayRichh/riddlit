@@ -1,22 +1,16 @@
 import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 
+import { RiddleRequestForm } from '@/app/teams/_components/riddle-request-form'
 import { getTeamBySlug, getTeamMembers } from '@/lib/actions/db/teams-actions'
 
-import { CreateTeamRiddleForm } from '../../../_components/create-team-riddle-form'
-
-export const metadata = {
-  title: 'Create Team Riddle | Riddlix',
-  description: 'Create a new riddle for your team',
-}
-
-interface CreateTeamRiddlePageProps {
+interface RiddleRequestPageProps {
   params: Promise<{
     slug: string
   }>
 }
 
-export default async function CreateTeamRiddlePage({ params }: CreateTeamRiddlePageProps) {
+export default async function RiddleRequestPage({ params }: RiddleRequestPageProps) {
   const { userId } = await auth()
 
   if (!userId) {
@@ -37,23 +31,31 @@ export default async function CreateTeamRiddlePage({ params }: CreateTeamRiddleP
     return redirect('/teams')
   }
 
-  // Check if user is a member of this team
+  // Check if user is already a member of this team
   const isMember = membersResult.data.some((member) => member.userId === userId)
 
-  if (!isMember) {
-    return redirect('/teams')
+  if (isMember) {
+    return redirect(`/teams/${slug}/riddles/create`)
   }
 
   return (
     <div className="mx-auto max-w-2xl space-y-6">
       <div>
+        <h1 className="text-3xl font-bold">Request a Riddle</h1>
         <p className="text-muted-foreground">
-          Create a new riddle for your team &quot;{teamResult.data.name}&quot;. This riddle will be
-          available immediately to team members.
+          Submit a riddle request for team "{teamResult.data.name}". The team owner will review and
+          decide whether to approve it.
         </p>
       </div>
 
-      <CreateTeamRiddleForm teamId={teamResult.data.id} teamName={teamResult.data.name} />
+      <RiddleRequestForm
+        teamId={teamResult.data.id}
+        teamName={teamResult.data.name}
+        onSuccess={() => {
+          // Redirect to team page after successful submission
+          window.location.href = `/teams/${slug}`
+        }}
+      />
     </div>
   )
 }

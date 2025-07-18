@@ -11,8 +11,9 @@ import postgres from 'postgres'
 
 import { contactsTable } from '@/db/schema/contacts'
 import { profilesTable } from '@/db/schema/profiles'
-import { riddleResponsesTable,riddlesTable } from '@/db/schema/riddles'
-import { teamJoinRequestsTable,teamMembershipsTable, teamsTable } from '@/db/schema/teams'
+import { riddleRequestsTable } from '@/db/schema/riddle-requests'
+import { riddleResponsesTable, riddlesTable } from '@/db/schema/riddles'
+import { teamJoinRequestsTable, teamMembershipsTable, teamsTable } from '@/db/schema/teams'
 
 config({ path: '.env.local' })
 
@@ -24,6 +25,7 @@ const schema = {
   teamJoinRequests: teamJoinRequestsTable,
   riddles: riddlesTable,
   riddleResponses: riddleResponsesTable,
+  riddleRequests: riddleRequestsTable,
 }
 
 // Global is used here to maintain a cached connection across hot reloads

@@ -31,6 +31,7 @@ export function CreateRiddleForm() {
   const [multipleChoiceOptions, setMultipleChoiceOptions] = useState('')
   const [availableHours, setAvailableHours] = useState('24')
   const [imageUrl, setImageUrl] = useState('')
+  const [isImageUploading, setIsImageUploading] = useState(false)
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
@@ -40,6 +41,12 @@ export function CreateRiddleForm() {
     e.preventDefault()
     setError('')
     setSuccess('')
+
+    // Prevent submission during image upload
+    if (isImageUploading) {
+      setError('Please wait for the image upload to complete')
+      return
+    }
 
     if (
       !title.trim() ||
@@ -259,9 +266,14 @@ export function CreateRiddleForm() {
 
           <div className="space-y-2">
             <Label>Riddle Image (Optional)</Label>
-            <ImageUpload value={imageUrl} onChange={setImageUrl} disabled={isPending} />
+            <ImageUpload
+              value={imageUrl}
+              onChange={setImageUrl}
+              disabled={isPending}
+              onUploadingChange={setIsImageUploading}
+            />
             <p className="text-muted-foreground text-sm">
-              Add an image URL to make your riddle more engaging and visual.
+              Add an image to make your riddle more engaging and visual.
             </p>
           </div>
 
@@ -288,8 +300,12 @@ export function CreateRiddleForm() {
             >
               Cancel
             </Button>
-            <Button type="submit" disabled={isPending}>
-              {isPending ? 'Submitting...' : 'Submit Riddle'}
+            <Button type="submit" disabled={isPending || isImageUploading}>
+              {isPending
+                ? 'Submitting...'
+                : isImageUploading
+                  ? 'Uploading Image...'
+                  : 'Submit Riddle'}
             </Button>
           </div>
         </form>

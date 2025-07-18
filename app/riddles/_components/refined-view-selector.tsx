@@ -4,6 +4,7 @@ import { ChevronDown, Globe, Users } from 'lucide-react'
 import { useState } from 'react'
 
 import { SelectTeam } from '@/db/schema/teams'
+import { useViewPersistence } from '@/lib/hooks/use-user-preferences'
 import { cn } from '@/lib/utils'
 
 interface RefinedViewSelectorProps {
@@ -25,8 +26,9 @@ export function RefinedViewSelector({
 
   const handleViewChange = (newView: 'public' | 'team') => {
     onViewChange(newView)
-    if (newView === 'team' && teams.length > 0 && !selectedTeamId) {
-      onTeamChange(teams[0].id)
+    // Default to "All My Teams" (null) instead of first team
+    if (newView === 'team' && teams.length > 0 && selectedTeamId === undefined) {
+      onTeamChange(null)
     }
   }
 
@@ -34,21 +36,8 @@ export function RefinedViewSelector({
 
   return (
     <div className="flex items-center gap-3">
-      {/* Clean Toggle Buttons */}
+      {/* Clean Toggle Buttons - Teams first (default) */}
       <div className="flex items-center gap-1">
-        <button
-          onClick={() => handleViewChange('public')}
-          className={cn(
-            'flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200',
-            view === 'public'
-              ? 'bg-primary text-primary-foreground shadow-sm'
-              : 'text-muted-foreground hover:text-foreground hover:bg-muted/50',
-          )}
-        >
-          <Globe className="h-4 w-4" />
-          Public
-        </button>
-
         <button
           onClick={() => handleViewChange('team')}
           className={cn(
@@ -61,6 +50,18 @@ export function RefinedViewSelector({
           <Users className="h-4 w-4" />
           Teams
         </button>
+        <button
+          onClick={() => handleViewChange('public')}
+          className={cn(
+            'flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200',
+            view === 'public'
+              ? 'bg-primary text-primary-foreground shadow-sm'
+              : 'text-muted-foreground hover:text-foreground hover:bg-muted/50',
+          )}
+        >
+          <Globe className="h-4 w-4" />
+          Public
+        </button>
       </div>
 
       {/* Team Selector */}
@@ -71,7 +72,7 @@ export function RefinedViewSelector({
             className="border-border/40 bg-background/80 hover:bg-background flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium transition-colors"
           >
             <span className="max-w-32 truncate">
-              {selectedTeam ? selectedTeam.name : 'All Teams'}
+              {selectedTeam ? selectedTeam.name : 'All My Teams'}
             </span>
             <ChevronDown
               className={cn(

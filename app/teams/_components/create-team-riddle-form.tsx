@@ -36,6 +36,7 @@ export function CreateTeamRiddleForm({ teamId, teamName }: CreateTeamRiddleFormP
   const [multipleChoiceOptions, setMultipleChoiceOptions] = useState('')
   const [availableHours, setAvailableHours] = useState('24')
   const [imageUrl, setImageUrl] = useState('')
+  const [isImageUploading, setIsImageUploading] = useState(false)
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
@@ -45,6 +46,12 @@ export function CreateTeamRiddleForm({ teamId, teamName }: CreateTeamRiddleFormP
     e.preventDefault()
     setError('')
     setSuccess('')
+
+    // block submit while file still uploading
+    if (isImageUploading) {
+      setError('Please wait for the image upload to finish')
+      return
+    }
 
     if (
       !title.trim() ||
@@ -265,7 +272,12 @@ export function CreateTeamRiddleForm({ teamId, teamName }: CreateTeamRiddleFormP
 
           <div className="space-y-2">
             <Label>Riddle Image (Optional)</Label>
-            <ImageUpload value={imageUrl} onChange={setImageUrl} disabled={isPending} />
+            <ImageUpload
+              value={imageUrl}
+              onChange={setImageUrl}
+              disabled={isPending}
+              onUploadingChange={setIsImageUploading}
+            />
             <p className="text-muted-foreground text-sm">
               Add an image URL to make your riddle more engaging and visual.
             </p>
@@ -294,8 +306,8 @@ export function CreateTeamRiddleForm({ teamId, teamName }: CreateTeamRiddleFormP
             >
               Cancel
             </Button>
-            <Button type="submit" disabled={isPending}>
-              {isPending ? 'Creating...' : 'Create Riddle'}
+            <Button type="submit" disabled={isPending || isImageUploading}>
+              {isPending || isImageUploading ? 'Processing...' : 'Create Riddle'}
             </Button>
           </div>
         </form>

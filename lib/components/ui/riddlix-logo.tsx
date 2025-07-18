@@ -28,10 +28,6 @@ export const RiddlixLogo = ({ size = 400, className = '', animate = false }: Rid
     visible: {
       opacity: 1,
       scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: 'easeOut',
-      },
     },
   }
 
