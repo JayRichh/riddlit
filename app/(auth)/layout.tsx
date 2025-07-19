@@ -9,7 +9,7 @@ export const metadata = {
   description:
     'Sign in or sign up to Riddlit. Join the community of riddle solvers and start building your team today.',
   openGraph: {
-    url: 'https://riddl.it/login',
+    url: 'https://www.riddl.it/login',
     images: [
       {
         url: '/riddlit_logo.png',
@@ -21,7 +21,7 @@ export const metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://riddl.it/login',
+    canonical: 'https://www.riddl.it/login',
   },
   robots: {
     index: false,

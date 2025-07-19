@@ -12,7 +12,7 @@ export const metadata = {
   description:
     'Your Riddlit dashboard with stats and activity. Track your progress, view team performance, and manage your riddle-solving journey.',
   openGraph: {
-    url: 'https://riddl.it/dashboard',
+    url: 'https://www.riddl.it/dashboard',
     images: [
       {
         url: '/riddlit_logo.png',
@@ -24,7 +24,7 @@ export const metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://riddl.it/dashboard',
+    canonical: 'https://www.riddl.it/dashboard',
   },
   robots: {
     index: false,

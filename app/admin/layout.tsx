@@ -12,7 +12,7 @@ export const metadata = {
   description:
     'Admin panel for managing Riddlit content. Control riddles, manage teams, and oversee community activities.',
   openGraph: {
-    url: 'https://riddl.it/admin',
+    url: 'https://www.riddl.it/admin',
     images: [
       {
         url: '/riddlit_logo.png',
@@ -24,7 +24,7 @@ export const metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://riddl.it/admin',
+    canonical: 'https://www.riddl.it/admin',
   },
   robots: {
     index: false,

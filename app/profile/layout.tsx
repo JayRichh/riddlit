@@ -12,7 +12,7 @@ export const metadata = {
   description:
     'View and manage your profile on Riddlit. Update your settings, track your progress, and customize your riddle-solving experience.',
   openGraph: {
-    url: 'https://riddl.it/profile',
+    url: 'https://www.riddl.it/profile',
     images: [
       {
         url: '/riddlit_logo.png',
@@ -24,7 +24,7 @@ export const metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://riddl.it/profile',
+    canonical: 'https://www.riddl.it/profile',
   },
   robots: {
     index: false,

@@ -12,7 +12,7 @@ export const metadata = {
   description:
     'Browse and manage teams on Riddlit. Join existing teams or create your own to compete in riddle challenges and climb the leaderboard together.',
   openGraph: {
-    url: 'https://riddl.it/teams',
+    url: 'https://www.riddl.it/teams',
     images: [
       {
         url: '/riddlit_logo.png',
@@ -24,7 +24,7 @@ export const metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://riddl.it/teams',
+    canonical: 'https://www.riddl.it/teams',
   },
   robots: {
     index: false,

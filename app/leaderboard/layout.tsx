@@ -12,7 +12,7 @@ export const metadata = {
   description:
     'View rankings and statistics on Riddlit. Track top performers, team standings, and competitive statistics in our riddle-solving community.',
   openGraph: {
-    url: 'https://riddl.it/leaderboard',
+    url: 'https://www.riddl.it/leaderboard',
     images: [
       {
         url: '/riddlit_logo.png',
@@ -24,7 +24,7 @@ export const metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://riddl.it/leaderboard',
+    canonical: 'https://www.riddl.it/leaderboard',
   },
   robots: {
     index: false,

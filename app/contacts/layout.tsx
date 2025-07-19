@@ -12,7 +12,7 @@ export const metadata = {
   description:
     'Manage your contacts and team connections on Riddlit. Connect with teammates, build your network, and strengthen collaboration.',
   openGraph: {
-    url: 'https://riddl.it/contacts',
+    url: 'https://www.riddl.it/contacts',
     images: [
       {
         url: '/riddlit_logo.png',
@@ -24,7 +24,7 @@ export const metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://riddl.it/contacts',
+    canonical: 'https://www.riddl.it/contacts',
   },
   robots: {
     index: false,

@@ -22,7 +22,7 @@ export const viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://riddl.it'),
+  metadataBase: new URL('https://www.riddl.it'),
   title: {
     default: 'Riddlit | Challenge Minds. Build Teams. Rise Up.',
     template: '%s | Riddlit',
@@ -47,11 +47,11 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
-      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/riddlit_logo.png', sizes: 'any' },
+      { url: '/riddlit_logo.png', type: 'image/png', sizes: '16x16' },
+      { url: '/riddlit_logo.png', type: 'image/png', sizes: '32x32' },
     ],
-    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+    apple: [{ url: '/riddlit_logo.png', sizes: '180x180' }],
   },
   robots: {
     index: true,
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://riddl.it',
+    url: 'https://www.riddl.it',
     title: 'Riddlit | Challenge Minds. Build Teams. Rise Up.',
     description:
       'Daily team riddles for sharper thinking and smarter teams. Join or create teams, solve challenges, and climb the leaderboard.',
@@ -97,7 +97,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://riddl.it',
+    canonical: 'https://www.riddl.it',
   },
   category: 'Game',
   classification: 'Team Building Game',
@@ -129,12 +129,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               __html: JSON.stringify({
                 '@context': 'https://schema.org',
                 '@type': 'Organization',
-                '@id': 'https://riddl.it/#organization',
+                '@id': 'https://www.riddl.it/#organization',
                 name: 'Riddlit',
-                url: 'https://riddl.it',
+                url: 'https://www.riddl.it',
                 logo: {
                   '@type': 'ImageObject',
-                  url: 'https://riddl.it/riddlit_logo.png',
+                  url: 'https://www.riddl.it/riddlit_logo.png',
                   width: 800,
                   height: 600,
                 },
@@ -159,12 +159,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               __html: JSON.stringify({
                 '@context': 'https://schema.org',
                 '@type': 'WebSite',
-                '@id': 'https://riddl.it/#website',
-                url: 'https://riddl.it',
+                '@id': 'https://www.riddl.it/#website',
+                url: 'https://www.riddl.it',
                 name: 'Riddlit',
                 description: 'Daily team riddles for sharper thinking and smarter teams',
                 publisher: {
-                  '@id': 'https://riddl.it/#organization',
+                  '@id': 'https://www.riddl.it/#organization',
                 },
                 inLanguage: 'en-US',
               }),
@@ -178,7 +178,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 '@context': 'https://schema.org',
                 '@type': 'WebApplication',
                 name: 'Riddlit',
-                url: 'https://riddl.it',
+                url: 'https://www.riddl.it',
                 description:
                   'Daily team riddles for sharper thinking and smarter teams. Join or create teams, solve challenges, and climb the leaderboard.',
                 applicationCategory: 'GameApplication',

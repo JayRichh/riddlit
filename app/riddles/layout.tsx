@@ -12,7 +12,7 @@ export const metadata = {
   description:
     'Browse and solve challenging riddles on Riddlit. Test your problem-solving skills with brain teasers, puzzles, and mind games designed for team collaboration.',
   openGraph: {
-    url: 'https://riddl.it/riddles',
+    url: 'https://www.riddl.it/riddles',
     images: [
       {
         url: '/riddlit_logo.png',
@@ -24,7 +24,7 @@ export const metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://riddl.it/riddles',
+    canonical: 'https://www.riddl.it/riddles',
   },
   robots: {
     index: false,

@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://riddl.it'
+  const baseUrl = 'https://www.riddl.it'
 
   return [
     // Homepage - Highest Priority
