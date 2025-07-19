@@ -16,7 +16,7 @@ export const metadata = {
     description:
       'View and manage your profile on Riddlix. Update your settings, track your progress, and customize your riddle-solving experience.',
     type: 'website',
-    url: 'https://riddlix.vercel.app/profile',
+    url: 'https://riddl.it/profile',
     images: [
       {
         url: '/riddlix_logo.png',
@@ -36,7 +36,7 @@ export const metadata = {
     images: ['/riddlix_logo.png'],
   },
   alternates: {
-    canonical: 'https://riddlix.vercel.app/profile',
+    canonical: 'https://riddl.it/profile',
   },
   robots: {
     index: false,

@@ -26,7 +26,7 @@ export const metadata = {
     description:
       'Browse and manage teams on Riddlix. Join existing teams or create your own to compete in riddle challenges and climb the leaderboard together.',
     type: 'website',
-    url: 'https://riddlix.vercel.app/teams',
+    url: 'https://riddl.it/teams',
     images: [
       {
         url: '/riddlix_logo.png',
@@ -46,7 +46,7 @@ export const metadata = {
     images: ['/riddlix_logo.png'],
   },
   alternates: {
-    canonical: 'https://riddlix.vercel.app/teams',
+    canonical: 'https://riddl.it/teams',
   },
   robots: {
     index: false,

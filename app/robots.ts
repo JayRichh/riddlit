@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://riddlix.vercel.app'
+  const baseUrl = 'https://riddl.it'
   const isProduction = process.env.NODE_ENV === 'production'
 
   // Block everything in development/staging

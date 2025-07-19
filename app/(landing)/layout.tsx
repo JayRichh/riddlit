@@ -23,7 +23,7 @@ export const metadata = {
     description:
       'Daily team riddles for sharper thinking and smarter teams. Join or create teams, solve challenges, and climb the leaderboard.',
     type: 'website',
-    url: 'https://riddlix.vercel.app',
+    url: 'https://riddl.it',
     images: [
       {
         url: '/riddlix_logo.png',
@@ -43,7 +43,7 @@ export const metadata = {
     images: ['/riddlix_logo.png'],
   },
   alternates: {
-    canonical: 'https://riddlix.vercel.app',
+    canonical: 'https://riddl.it',
   },
 }
 

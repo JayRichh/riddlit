@@ -13,7 +13,7 @@ export const metadata = {
     description:
       'Sign in or sign up to Riddlix. Join the community of riddle solvers and start building your team today.',
     type: 'website',
-    url: 'https://riddlix.vercel.app/login',
+    url: 'https://riddl.it/login',
     images: [
       {
         url: '/riddlix_logo.png',
@@ -33,7 +33,7 @@ export const metadata = {
     images: ['/riddlix_logo.png'],
   },
   alternates: {
-    canonical: 'https://riddlix.vercel.app/login',
+    canonical: 'https://riddl.it/login',
   },
   robots: {
     index: false,

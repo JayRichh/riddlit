@@ -4,7 +4,7 @@ import { HeroSection } from '@/lib/components/landing/hero'
 
 export default async function HomePage() {
   return (
-    <div className="pb-20">
+    <div className="min-h-screen">
       <HeroSection />
       <FeaturesSection />
       <CTASection />

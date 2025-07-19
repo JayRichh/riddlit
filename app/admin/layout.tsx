@@ -16,7 +16,7 @@ export const metadata = {
     description:
       'Admin panel for managing Riddlix content. Control riddles, manage teams, and oversee community activities.',
     type: 'website',
-    url: 'https://riddlix.vercel.app/admin',
+    url: 'https://riddl.it/admin',
     images: [
       {
         url: '/riddlix_logo.png',
@@ -36,7 +36,7 @@ export const metadata = {
     images: ['/riddlix_logo.png'],
   },
   alternates: {
-    canonical: 'https://riddlix.vercel.app/admin',
+    canonical: 'https://riddl.it/admin',
   },
   robots: {
     index: false,

@@ -37,7 +37,13 @@ import React, { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { getUnreadNotificationCount } from '@/lib/actions/db/notification-actions'
 import { getProfileByUserId } from '@/lib/actions/db/profiles'
 import { Button } from '@/lib/components/ui/button'
-import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader } from '@/lib/components/ui/sidebar'
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  useSidebar,
+} from '@/lib/components/ui/sidebar'
 
 interface NavigationItem {
   title: string
@@ -304,9 +310,10 @@ export const AppSidebar = memo(
   ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
     const pathname = usePathname()
     const { user } = useUser()
+    const { state, toggleSidebar } = useSidebar()
+    const isCollapsed = state === 'collapsed'
     const [isProUser, setIsProUser] = useState(false)
     const [notificationCount, setNotificationCount] = useState(0)
-    const [isCollapsed, setIsCollapsed] = usePersistedState('sidebar-collapsed', false)
     const [expandedGroups, setExpandedGroups] = usePersistedState('sidebar-expanded-groups', {
       main: true,
       personal: true,
@@ -425,8 +432,8 @@ export const AppSidebar = memo(
     )
 
     const handleSidebarToggle = useCallback(() => {
-      setIsCollapsed(!isCollapsed)
-    }, [isCollapsed, setIsCollapsed])
+      toggleSidebar()
+    }, [toggleSidebar])
 
     // Optimized user profile check with caching to prevent re-renders
     useEffect(() => {
@@ -512,7 +519,7 @@ export const AppSidebar = memo(
             transition={{ duration: 0.2 }}
           >
             <Image
-              src="/riddlix_text.png"
+              src="/riddlit_text.png"
               alt="Riddlix Logo"
               width={isCollapsed ? 32 : 128}
               height={isCollapsed ? 32 : 48}

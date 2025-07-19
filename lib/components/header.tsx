@@ -52,7 +52,7 @@ export default function Header() {
       <div className="mx-auto flex max-w-(--breakpoint-2xl) items-center justify-between p-4">
         <div className="flex items-center space-x-2 hover:cursor-pointer hover:opacity-80">
           <Image
-            src="/riddlix_text.png"
+            src="/riddlit_text.png"
             alt="Riddlix Logo"
             onClick={() => (window.location.href = '/')}
             width={150}

@@ -26,7 +26,7 @@ export const metadata = {
     description:
       'Browse and solve challenging riddles on Riddlix. Test your problem-solving skills with brain teasers, puzzles, and mind games designed for team collaboration.',
     type: 'website',
-    url: 'https://riddlix.vercel.app/riddles',
+    url: 'https://riddl.it/riddles',
     images: [
       {
         url: '/riddlix_logo.png',
@@ -46,7 +46,7 @@ export const metadata = {
     images: ['/riddlix_logo.png'],
   },
   alternates: {
-    canonical: 'https://riddlix.vercel.app/riddles',
+    canonical: 'https://riddl.it/riddles',
   },
   robots: {
     index: false,

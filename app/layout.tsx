@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://riddlix.vercel.app'),
+  metadataBase: new URL('https://riddl.it'),
   title: {
     default: 'Riddlix | Challenge Minds. Build Teams. Rise Up.',
     template: '%s | Riddlix',
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://riddlix.vercel.app',
+    url: 'https://riddl.it',
     title: 'Riddlix | Challenge Minds. Build Teams. Rise Up.',
     description:
       'Daily team riddles for sharper thinking and smarter teams. Join or create teams, solve challenges, and climb the leaderboard.',
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     images: ['/riddlix_logo.png'],
   },
   alternates: {
-    canonical: 'https://riddlix.vercel.app',
+    canonical: 'https://riddl.it',
   },
   other: {
     'theme-color': '#000000',
@@ -101,12 +101,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               __html: JSON.stringify({
                 '@context': 'https://schema.org',
                 '@type': 'Organization',
-                '@id': 'https://riddlix.vercel.app/#organization',
+                '@id': 'https://riddl.it/#organization',
                 name: 'Riddlix',
-                url: 'https://riddlix.vercel.app',
+                url: 'https://riddl.it',
                 logo: {
                   '@type': 'ImageObject',
-                  url: 'https://riddlix.vercel.app/riddlix_logo.png',
+                  url: 'https://riddl.it/riddlix_logo.png',
                   width: 800,
                   height: 600,
                 },
@@ -131,12 +131,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               __html: JSON.stringify({
                 '@context': 'https://schema.org',
                 '@type': 'WebSite',
-                '@id': 'https://riddlix.vercel.app/#website',
-                url: 'https://riddlix.vercel.app',
+                '@id': 'https://riddl.it/#website',
+                url: 'https://riddl.it',
                 name: 'Riddlix',
                 description: 'Daily team riddles for sharper thinking and smarter teams',
                 publisher: {
-                  '@id': 'https://riddlix.vercel.app/#organization',
+                  '@id': 'https://riddl.it/#organization',
                 },
                 inLanguage: 'en-US',
               }),
@@ -150,7 +150,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 '@context': 'https://schema.org',
                 '@type': 'WebApplication',
                 name: 'Riddlix',
-                url: 'https://riddlix.vercel.app',
+                url: 'https://riddl.it',
                 description:
                   'Daily team riddles for sharper thinking and smarter teams. Join or create teams, solve challenges, and climb the leaderboard.',
                 applicationCategory: 'GameApplication',

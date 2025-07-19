@@ -26,7 +26,7 @@ export const metadata = {
     description:
       'View rankings and statistics on Riddlix. Track top performers, team standings, and competitive statistics in our riddle-solving community.',
     type: 'website',
-    url: 'https://riddlix.vercel.app/leaderboard',
+    url: 'https://riddl.it/leaderboard',
     images: [
       {
         url: '/riddlix_logo.png',
@@ -46,7 +46,7 @@ export const metadata = {
     images: ['/riddlix_logo.png'],
   },
   alternates: {
-    canonical: 'https://riddlix.vercel.app/leaderboard',
+    canonical: 'https://riddl.it/leaderboard',
   },
   robots: {
     index: false,

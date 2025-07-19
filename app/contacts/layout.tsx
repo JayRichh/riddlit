@@ -16,7 +16,7 @@ export const metadata = {
     description:
       'Manage your contacts and team connections on Riddlix. Connect with teammates, build your network, and strengthen collaboration.',
     type: 'website',
-    url: 'https://riddlix.vercel.app/contacts',
+    url: 'https://riddl.it/contacts',
     images: [
       {
         url: '/riddlix_logo.png',
@@ -36,7 +36,7 @@ export const metadata = {
     images: ['/riddlix_logo.png'],
   },
   alternates: {
-    canonical: 'https://riddlix.vercel.app/contacts',
+    canonical: 'https://riddl.it/contacts',
   },
   robots: {
     index: false,
