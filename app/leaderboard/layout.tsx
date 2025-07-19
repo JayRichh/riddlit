@@ -8,42 +8,20 @@ import { SidebarProvider } from '@/lib/components/ui/sidebar'
 import { LeaderboardNavbar } from './_components/leaderboard-navbar'
 
 export const metadata = {
-  title: 'Leaderboard | Riddlix',
+  title: 'Leaderboard',
   description:
     'View rankings and statistics on Riddlix. Track top performers, team standings, and competitive statistics in our riddle-solving community.',
-  keywords: [
-    'leaderboard',
-    'rankings',
-    'statistics',
-    'top performers',
-    'team standings',
-    'competition',
-    'riddle champions',
-    'performance tracking',
-  ],
   openGraph: {
-    title: 'Leaderboard | Riddlix',
-    description:
-      'View rankings and statistics on Riddlix. Track top performers, team standings, and competitive statistics in our riddle-solving community.',
-    type: 'website',
     url: 'https://riddl.it/leaderboard',
     images: [
       {
         url: '/riddlix_logo.png',
-        width: 800,
-        height: 600,
+        width: 1200,
+        height: 630,
         alt: 'Riddlix Leaderboard - Rankings and Statistics',
+        type: 'image/png',
       },
     ],
-    siteName: 'Riddlix',
-    locale: 'en_US',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Leaderboard | Riddlix',
-    description:
-      'View rankings and statistics on Riddlix. Track top performers, team standings, and competitive statistics in our riddle-solving community.',
-    images: ['/riddlix_logo.png'],
   },
   alternates: {
     canonical: 'https://riddl.it/leaderboard',

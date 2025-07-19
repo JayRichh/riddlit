@@ -8,32 +8,20 @@ import { SidebarProvider } from '@/lib/components/ui/sidebar'
 import { ContactsNavbar } from './_components/contacts-navbar'
 
 export const metadata = {
-  title: 'Contacts | Riddlix',
+  title: 'Contacts',
   description:
     'Manage your contacts and team connections on Riddlix. Connect with teammates, build your network, and strengthen collaboration.',
   openGraph: {
-    title: 'Contacts | Riddlix',
-    description:
-      'Manage your contacts and team connections on Riddlix. Connect with teammates, build your network, and strengthen collaboration.',
-    type: 'website',
     url: 'https://riddl.it/contacts',
     images: [
       {
         url: '/riddlix_logo.png',
-        width: 800,
-        height: 600,
+        width: 1200,
+        height: 630,
         alt: 'Riddlix Contacts - Team Connections',
+        type: 'image/png',
       },
     ],
-    siteName: 'Riddlix',
-    locale: 'en_US',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Contacts | Riddlix',
-    description:
-      'Manage your contacts and team connections on Riddlix. Connect with teammates, build your network, and strengthen collaboration.',
-    images: ['/riddlix_logo.png'],
   },
   alternates: {
     canonical: 'https://riddl.it/contacts',

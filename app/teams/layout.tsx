@@ -8,42 +8,20 @@ import { SidebarProvider } from '@/lib/components/ui/sidebar'
 import { TeamsNavbar } from './_components/teams-navbar'
 
 export const metadata = {
-  title: 'Teams | Riddlix',
+  title: 'Teams',
   description:
     'Browse and manage teams on Riddlix. Join existing teams or create your own to compete in riddle challenges and climb the leaderboard together.',
-  keywords: [
-    'teams',
-    'team building',
-    'team collaboration',
-    'riddle teams',
-    'team competition',
-    'group challenges',
-    'team management',
-    'collaborative solving',
-  ],
   openGraph: {
-    title: 'Teams | Riddlix',
-    description:
-      'Browse and manage teams on Riddlix. Join existing teams or create your own to compete in riddle challenges and climb the leaderboard together.',
-    type: 'website',
     url: 'https://riddl.it/teams',
     images: [
       {
         url: '/riddlix_logo.png',
-        width: 800,
-        height: 600,
+        width: 1200,
+        height: 630,
         alt: 'Riddlix Teams - Team Building and Collaboration',
+        type: 'image/png',
       },
     ],
-    siteName: 'Riddlix',
-    locale: 'en_US',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Teams | Riddlix',
-    description:
-      'Browse and manage teams on Riddlix. Join existing teams or create your own to compete in riddle challenges and climb the leaderboard together.',
-    images: ['/riddlix_logo.png'],
   },
   alternates: {
     canonical: 'https://riddl.it/teams',

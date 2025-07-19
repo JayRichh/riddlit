@@ -8,32 +8,20 @@ import { SidebarProvider } from '@/lib/components/ui/sidebar'
 import { DashboardNavbar } from './_components/dashboard-navbar'
 
 export const metadata = {
-  title: 'Dashboard | Riddlix',
+  title: 'Dashboard',
   description:
     'Your Riddlix dashboard with stats and activity. Track your progress, view team performance, and manage your riddle-solving journey.',
   openGraph: {
-    title: 'Dashboard | Riddlix',
-    description:
-      'Your Riddlix dashboard with stats and activity. Track your progress, view team performance, and manage your riddle-solving journey.',
-    type: 'website',
     url: 'https://riddl.it/dashboard',
     images: [
       {
         url: '/riddlix_logo.png',
-        width: 800,
-        height: 600,
+        width: 1200,
+        height: 630,
         alt: 'Riddlix Dashboard',
+        type: 'image/png',
       },
     ],
-    siteName: 'Riddlix',
-    locale: 'en_US',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Dashboard | Riddlix',
-    description:
-      'Your Riddlix dashboard with stats and activity. Track your progress, view team performance, and manage your riddle-solving journey.',
-    images: ['/riddlix_logo.png'],
   },
   alternates: {
     canonical: 'https://riddl.it/dashboard',

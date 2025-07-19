@@ -8,32 +8,20 @@ import { SidebarProvider } from '@/lib/components/ui/sidebar'
 import { AdminNavbar } from './_components/admin-navbar'
 
 export const metadata = {
-  title: 'Admin | Riddlix',
+  title: 'Admin',
   description:
     'Admin panel for managing Riddlix content. Control riddles, manage teams, and oversee community activities.',
   openGraph: {
-    title: 'Admin | Riddlix',
-    description:
-      'Admin panel for managing Riddlix content. Control riddles, manage teams, and oversee community activities.',
-    type: 'website',
     url: 'https://riddl.it/admin',
     images: [
       {
         url: '/riddlix_logo.png',
-        width: 800,
-        height: 600,
+        width: 1200,
+        height: 630,
         alt: 'Riddlix Admin Panel',
+        type: 'image/png',
       },
     ],
-    siteName: 'Riddlix',
-    locale: 'en_US',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Admin | Riddlix',
-    description:
-      'Admin panel for managing Riddlix content. Control riddles, manage teams, and oversee community activities.',
-    images: ['/riddlix_logo.png'],
   },
   alternates: {
     canonical: 'https://riddl.it/admin',

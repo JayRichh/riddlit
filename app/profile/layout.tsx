@@ -8,32 +8,20 @@ import { SidebarProvider } from '@/lib/components/ui/sidebar'
 import { ProfileNavbar } from './_components/profile-navbar'
 
 export const metadata = {
-  title: 'Profile | Riddlix',
+  title: 'Profile',
   description:
     'View and manage your profile on Riddlix. Update your settings, track your progress, and customize your riddle-solving experience.',
   openGraph: {
-    title: 'Profile | Riddlix',
-    description:
-      'View and manage your profile on Riddlix. Update your settings, track your progress, and customize your riddle-solving experience.',
-    type: 'website',
     url: 'https://riddl.it/profile',
     images: [
       {
         url: '/riddlix_logo.png',
-        width: 800,
-        height: 600,
+        width: 1200,
+        height: 630,
         alt: 'Riddlix Profile - User Settings',
+        type: 'image/png',
       },
     ],
-    siteName: 'Riddlix',
-    locale: 'en_US',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Profile | Riddlix',
-    description:
-      'View and manage your profile on Riddlix. Update your settings, track your progress, and customize your riddle-solving experience.',
-    images: ['/riddlix_logo.png'],
   },
   alternates: {
     canonical: 'https://riddl.it/profile',

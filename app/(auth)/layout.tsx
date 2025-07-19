@@ -5,32 +5,20 @@ This server layout provides a centered layout for (auth) pages.
 */
 
 export const metadata = {
-  title: 'Authentication | Riddlix',
+  title: 'Authentication',
   description:
     'Sign in or sign up to Riddlix. Join the community of riddle solvers and start building your team today.',
   openGraph: {
-    title: 'Authentication | Riddlix',
-    description:
-      'Sign in or sign up to Riddlix. Join the community of riddle solvers and start building your team today.',
-    type: 'website',
     url: 'https://riddl.it/login',
     images: [
       {
         url: '/riddlix_logo.png',
-        width: 800,
-        height: 600,
+        width: 1200,
+        height: 630,
         alt: 'Riddlix Authentication - Join the Community',
+        type: 'image/png',
       },
     ],
-    siteName: 'Riddlix',
-    locale: 'en_US',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Authentication | Riddlix',
-    description:
-      'Sign in or sign up to Riddlix. Join the community of riddle solvers and start building your team today.',
-    images: ['/riddlix_logo.png'],
   },
   alternates: {
     canonical: 'https://riddl.it/login',

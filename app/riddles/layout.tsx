@@ -8,42 +8,20 @@ import { SidebarProvider } from '@/lib/components/ui/sidebar'
 import { ImprovedRiddlesNavbar } from './_components/improved-riddles-navbar'
 
 export const metadata = {
-  title: 'Riddles | Riddlix',
+  title: 'Riddles',
   description:
     'Browse and solve challenging riddles on Riddlix. Test your problem-solving skills with brain teasers, puzzles, and mind games designed for team collaboration.',
-  keywords: [
-    'riddles',
-    'puzzles',
-    'brain teasers',
-    'problem solving',
-    'mind games',
-    'challenges',
-    'logic puzzles',
-    'team riddles',
-  ],
   openGraph: {
-    title: 'Riddles | Riddlix',
-    description:
-      'Browse and solve challenging riddles on Riddlix. Test your problem-solving skills with brain teasers, puzzles, and mind games designed for team collaboration.',
-    type: 'website',
     url: 'https://riddl.it/riddles',
     images: [
       {
         url: '/riddlix_logo.png',
-        width: 800,
-        height: 600,
+        width: 1200,
+        height: 630,
         alt: 'Riddlix Riddles - Brain Teasers and Puzzles',
+        type: 'image/png',
       },
     ],
-    siteName: 'Riddlix',
-    locale: 'en_US',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Riddles | Riddlix',
-    description:
-      'Browse and solve challenging riddles on Riddlix. Test your problem-solving skills with brain teasers, puzzles, and mind games designed for team collaboration.',
-    images: ['/riddlix_logo.png'],
   },
   alternates: {
     canonical: 'https://riddl.it/riddles',

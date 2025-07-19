@@ -13,6 +13,14 @@ import { cn } from '@/lib/utils'
 
 const inter = Inter({ subsets: ['latin'] })
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: '#000000',
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://riddl.it'),
   title: {
@@ -36,6 +44,15 @@ export const metadata: Metadata = {
   authors: [{ name: 'Riddlix' }],
   creator: 'Riddlix',
   publisher: 'Riddlix',
+  manifest: '/manifest.json',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+  },
   robots: {
     index: true,
     follow: true,
@@ -57,26 +74,37 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/riddlix_logo.png',
-        width: 800,
-        height: 600,
+        width: 1200,
+        height: 630,
         alt: 'Riddlix - Challenge Minds. Build Teams. Rise Up.',
+        type: 'image/png',
       },
     ],
     siteName: 'Riddlix',
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@riddlix',
+    creator: '@riddlix',
     title: 'Riddlix | Challenge Minds. Build Teams. Rise Up.',
     description:
       'Daily team riddles for sharper thinking and smarter teams. Join or create teams, solve challenges, and climb the leaderboard.',
-    images: ['/riddlix_logo.png'],
+    images: [
+      {
+        url: '/riddlix_logo.png',
+        alt: 'Riddlix - Challenge Minds. Build Teams. Rise Up.',
+      },
+    ],
   },
   alternates: {
     canonical: 'https://riddl.it',
   },
+  category: 'Game',
+  classification: 'Team Building Game',
   other: {
-    'theme-color': '#000000',
     'msapplication-TileColor': '#000000',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
   },
 }
 
