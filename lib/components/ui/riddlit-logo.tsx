@@ -54,7 +54,7 @@ export const RiddlitLogo = ({ size = 400, className = '', animate = false }: Rid
         }}
       >
         <Image
-          src="/riddix_logo.svg"
+          src="/riddit_logo.svg"
           alt="Riddlit Logo"
           width={size}
           height={size}
