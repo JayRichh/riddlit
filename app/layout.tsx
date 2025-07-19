@@ -24,8 +24,8 @@ export const viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://riddl.it'),
   title: {
-    default: 'Riddlix | Challenge Minds. Build Teams. Rise Up.',
-    template: '%s | Riddlix',
+    default: 'Riddlit | Challenge Minds. Build Teams. Rise Up.',
+    template: '%s | Riddlit',
   },
   description:
     'Daily team riddles for sharper thinking and smarter teams. Join or create teams, solve challenges, and climb the leaderboard.',
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     'problem solving',
     'team collaboration',
   ],
-  authors: [{ name: 'Riddlix' }],
-  creator: 'Riddlix',
-  publisher: 'Riddlix',
+  authors: [{ name: 'Riddlit' }],
+  creator: 'Riddlit',
+  publisher: 'Riddlit',
   manifest: '/manifest.json',
   icons: {
     icon: [
@@ -68,31 +68,31 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://riddl.it',
-    title: 'Riddlix | Challenge Minds. Build Teams. Rise Up.',
+    title: 'Riddlit | Challenge Minds. Build Teams. Rise Up.',
     description:
       'Daily team riddles for sharper thinking and smarter teams. Join or create teams, solve challenges, and climb the leaderboard.',
     images: [
       {
-        url: '/riddlix_logo.png',
+        url: '/riddlit_logo.png',
         width: 1200,
         height: 630,
-        alt: 'Riddlix - Challenge Minds. Build Teams. Rise Up.',
+        alt: 'Riddlit - Challenge Minds. Build Teams. Rise Up.',
         type: 'image/png',
       },
     ],
-    siteName: 'Riddlix',
+    siteName: 'Riddlit',
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@riddlix',
-    creator: '@riddlix',
-    title: 'Riddlix | Challenge Minds. Build Teams. Rise Up.',
+    site: '@riddlit',
+    creator: '@riddlit',
+    title: 'Riddlit | Challenge Minds. Build Teams. Rise Up.',
     description:
       'Daily team riddles for sharper thinking and smarter teams. Join or create teams, solve challenges, and climb the leaderboard.',
     images: [
       {
-        url: '/riddlix_logo.png',
-        alt: 'Riddlix - Challenge Minds. Build Teams. Rise Up.',
+        url: '/riddlit_logo.png',
+        alt: 'Riddlit - Challenge Minds. Build Teams. Rise Up.',
       },
     ],
   },
@@ -130,11 +130,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 '@context': 'https://schema.org',
                 '@type': 'Organization',
                 '@id': 'https://riddl.it/#organization',
-                name: 'Riddlix',
+                name: 'Riddlit',
                 url: 'https://riddl.it',
                 logo: {
                   '@type': 'ImageObject',
-                  url: 'https://riddl.it/riddlix_logo.png',
+                  url: 'https://riddl.it/riddlit_logo.png',
                   width: 800,
                   height: 600,
                 },
@@ -161,7 +161,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 '@type': 'WebSite',
                 '@id': 'https://riddl.it/#website',
                 url: 'https://riddl.it',
-                name: 'Riddlix',
+                name: 'Riddlit',
                 description: 'Daily team riddles for sharper thinking and smarter teams',
                 publisher: {
                   '@id': 'https://riddl.it/#organization',
@@ -177,7 +177,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               __html: JSON.stringify({
                 '@context': 'https://schema.org',
                 '@type': 'WebApplication',
-                name: 'Riddlix',
+                name: 'Riddlit',
                 url: 'https://riddl.it',
                 description:
                   'Daily team riddles for sharper thinking and smarter teams. Join or create teams, solve challenges, and climb the leaderboard.',
@@ -185,7 +185,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 operatingSystem: 'Web Browser',
                 author: {
                   '@type': 'Organization',
-                  name: 'Riddlix',
+                  name: 'Riddlit',
                 },
                 offers: {
                   '@type': 'Offer',

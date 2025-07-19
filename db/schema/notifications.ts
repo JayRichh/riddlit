@@ -1,6 +1,6 @@
 /*
 <ai_context>
-Database schema for the notification system in Riddlix.
+Database schema for the notification system in Riddlit.
 Defines notifications table, notification types, and related enums.
 </ai_context>
 */

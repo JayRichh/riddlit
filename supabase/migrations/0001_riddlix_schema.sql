@@ -1,4 +1,4 @@
--- Riddlix MVP Database Schema Migration
+-- Riddlit MVP Database Schema Migration
 -- This migration adds all tables and functionality for the riddle game system
 
 -- Create new enums

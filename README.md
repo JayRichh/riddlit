@@ -1,10 +1,10 @@
-# ![](<riddlix sm.png>) Riddlix
+# ![](<riddlit sm.png>) Riddlit
 
 ![RiddleHero](image-1.png)
 
 **Challenge Minds. Build Teams.**
 
-Riddlix is a team-based riddle-solving platform that brings teams together through daily challenges, friendly competition, and collaborative problem-solving. Built for organizations looking to engage their teams in fun, intellectual challenges while building stronger connections.
+Riddlit is a team-based riddle-solving platform that brings teams together through daily challenges, friendly competition, and collaborative problem-solving. Built for organizations looking to engage their teams in fun, intellectual challenges while building stronger connections.
 
 ![RiddleOverview](image.png)
 
@@ -47,7 +47,7 @@ Riddlix is a team-based riddle-solving platform that brings teams together throu
 ## 🏗️ Project Structure
 
 ```
-riddlix/
+riddlit/
 ├── app/                    # Next.js app router
 │   ├── (auth)/            # Authentication routes
 │   ├── (landing)/         # Landing page
@@ -91,8 +91,8 @@ Points, streaks, and rankings create friendly competition. Track your progress o
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/jayrichh/riddlix.git
-   cd riddlix
+   git clone https://github.com/jayrichh/riddlit.git
+   cd riddlit
    ```
 
 2. **Install dependencies**

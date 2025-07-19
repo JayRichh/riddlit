@@ -10,15 +10,15 @@ import { AdminNavbar } from './_components/admin-navbar'
 export const metadata = {
   title: 'Admin',
   description:
-    'Admin panel for managing Riddlix content. Control riddles, manage teams, and oversee community activities.',
+    'Admin panel for managing Riddlit content. Control riddles, manage teams, and oversee community activities.',
   openGraph: {
     url: 'https://riddl.it/admin',
     images: [
       {
-        url: '/riddlix_logo.png',
+        url: '/riddlit_logo.png',
         width: 1200,
         height: 630,
-        alt: 'Riddlix Admin Panel',
+        alt: 'Riddlit Admin Panel',
         type: 'image/png',
       },
     ],

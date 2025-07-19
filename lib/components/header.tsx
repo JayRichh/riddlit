@@ -1,6 +1,6 @@
 /*
 <ai_context>
-Landing page header component for the Riddlix app.
+Landing page header component for the Riddlit app.
 Provides navigation and user controls for the landing page.
 Updated with notification bell for signed-in users (already has dark mode toggle).
 </ai_context>
@@ -53,7 +53,7 @@ export default function Header() {
         <div className="flex items-center space-x-2 hover:cursor-pointer hover:opacity-80">
           <Image
             src="/riddlit_text.png"
-            alt="Riddlix Logo"
+            alt="Riddlit Logo"
             onClick={() => (window.location.href = '/')}
             width={150}
             height={48}

@@ -10,15 +10,15 @@ import { TeamsNavbar } from './_components/teams-navbar'
 export const metadata = {
   title: 'Teams',
   description:
-    'Browse and manage teams on Riddlix. Join existing teams or create your own to compete in riddle challenges and climb the leaderboard together.',
+    'Browse and manage teams on Riddlit. Join existing teams or create your own to compete in riddle challenges and climb the leaderboard together.',
   openGraph: {
     url: 'https://riddl.it/teams',
     images: [
       {
-        url: '/riddlix_logo.png',
+        url: '/riddlit_logo.png',
         width: 1200,
         height: 630,
-        alt: 'Riddlix Teams - Team Building and Collaboration',
+        alt: 'Riddlit Teams - Team Building and Collaboration',
         type: 'image/png',
       },
     ],

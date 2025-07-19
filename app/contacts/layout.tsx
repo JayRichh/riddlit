@@ -10,15 +10,15 @@ import { ContactsNavbar } from './_components/contacts-navbar'
 export const metadata = {
   title: 'Contacts',
   description:
-    'Manage your contacts and team connections on Riddlix. Connect with teammates, build your network, and strengthen collaboration.',
+    'Manage your contacts and team connections on Riddlit. Connect with teammates, build your network, and strengthen collaboration.',
   openGraph: {
     url: 'https://riddl.it/contacts',
     images: [
       {
-        url: '/riddlix_logo.png',
+        url: '/riddlit_logo.png',
         width: 1200,
         height: 630,
-        alt: 'Riddlix Contacts - Team Connections',
+        alt: 'Riddlit Contacts - Team Connections',
         type: 'image/png',
       },
     ],

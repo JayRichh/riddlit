@@ -10,15 +10,15 @@ import { DashboardNavbar } from './_components/dashboard-navbar'
 export const metadata = {
   title: 'Dashboard',
   description:
-    'Your Riddlix dashboard with stats and activity. Track your progress, view team performance, and manage your riddle-solving journey.',
+    'Your Riddlit dashboard with stats and activity. Track your progress, view team performance, and manage your riddle-solving journey.',
   openGraph: {
     url: 'https://riddl.it/dashboard',
     images: [
       {
-        url: '/riddlix_logo.png',
+        url: '/riddlit_logo.png',
         width: 1200,
         height: 630,
-        alt: 'Riddlix Dashboard',
+        alt: 'Riddlit Dashboard',
         type: 'image/png',
       },
     ],

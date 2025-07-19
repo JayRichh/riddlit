@@ -6,7 +6,7 @@ import { getTeamBySlug, getTeamMembers } from '@/lib/actions/db/teams-actions'
 import { CreateTeamRiddleForm } from '../../../_components/create-team-riddle-form'
 
 export const metadata = {
-  title: 'Create Team Riddle | Riddlix',
+  title: 'Create Team Riddle | Riddlit',
   description: 'Create a new riddle for your team',
 }
 

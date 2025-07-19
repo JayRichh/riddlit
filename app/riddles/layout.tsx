@@ -10,15 +10,15 @@ import { ImprovedRiddlesNavbar } from './_components/improved-riddles-navbar'
 export const metadata = {
   title: 'Riddles',
   description:
-    'Browse and solve challenging riddles on Riddlix. Test your problem-solving skills with brain teasers, puzzles, and mind games designed for team collaboration.',
+    'Browse and solve challenging riddles on Riddlit. Test your problem-solving skills with brain teasers, puzzles, and mind games designed for team collaboration.',
   openGraph: {
     url: 'https://riddl.it/riddles',
     images: [
       {
-        url: '/riddlix_logo.png',
+        url: '/riddlit_logo.png',
         width: 1200,
         height: 630,
-        alt: 'Riddlix Riddles - Brain Teasers and Puzzles',
+        alt: 'Riddlit Riddles - Brain Teasers and Puzzles',
         type: 'image/png',
       },
     ],

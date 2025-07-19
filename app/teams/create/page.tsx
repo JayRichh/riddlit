@@ -4,8 +4,8 @@ import { redirect } from 'next/navigation'
 import { CreateTeamForm } from '../_components/create-team-form'
 
 export const metadata = {
-  title: 'Create Team | Riddlix',
-  description: 'Create a new team on Riddlix',
+  title: 'Create Team | Riddlit',
+  description: 'Create a new team on Riddlit',
 }
 
 export default async function CreateTeamPage() {

@@ -7,15 +7,15 @@ This server layout provides a centered layout for (auth) pages.
 export const metadata = {
   title: 'Authentication',
   description:
-    'Sign in or sign up to Riddlix. Join the community of riddle solvers and start building your team today.',
+    'Sign in or sign up to Riddlit. Join the community of riddle solvers and start building your team today.',
   openGraph: {
     url: 'https://riddl.it/login',
     images: [
       {
-        url: '/riddlix_logo.png',
+        url: '/riddlit_logo.png',
         width: 1200,
         height: 630,
-        alt: 'Riddlix Authentication - Join the Community',
+        alt: 'Riddlit Authentication - Join the Community',
         type: 'image/png',
       },
     ],

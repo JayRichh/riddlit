@@ -64,7 +64,7 @@ export function DisplayNameSetupOverlay({ userId, onComplete }: DisplayNameSetup
               <Sparkles className="absolute -top-1 -right-1 h-5 w-5 text-yellow-500" />
             </div>
           </div>
-          <CardTitle className="text-2xl">Welcome to Riddlix!</CardTitle>
+          <CardTitle className="text-2xl">Welcome to Riddlit!</CardTitle>
           <CardDescription>
             Let&apos;s set up your profile. What would you like to be called?
           </CardDescription>

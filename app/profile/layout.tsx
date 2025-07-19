@@ -10,15 +10,15 @@ import { ProfileNavbar } from './_components/profile-navbar'
 export const metadata = {
   title: 'Profile',
   description:
-    'View and manage your profile on Riddlix. Update your settings, track your progress, and customize your riddle-solving experience.',
+    'View and manage your profile on Riddlit. Update your settings, track your progress, and customize your riddle-solving experience.',
   openGraph: {
     url: 'https://riddl.it/profile',
     images: [
       {
-        url: '/riddlix_logo.png',
+        url: '/riddlit_logo.png',
         width: 1200,
         height: 630,
-        alt: 'Riddlix Profile - User Settings',
+        alt: 'Riddlit Profile - User Settings',
         type: 'image/png',
       },
     ],

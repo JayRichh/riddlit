@@ -6,7 +6,7 @@ import { getTeamBySlug, getTeamMembers } from '@/lib/actions/db/teams-actions'
 import { TeamSettingsForm } from '../../_components/team-settings-form'
 
 export const metadata = {
-  title: 'Team Settings | Riddlix',
+  title: 'Team Settings | Riddlit',
   description: 'Update team settings and preferences',
 }
 

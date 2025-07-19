@@ -520,7 +520,7 @@ export const AppSidebar = memo(
           >
             <Image
               src="/riddlit_text.png"
-              alt="Riddlix Logo"
+              alt="Riddlit Logo"
               width={isCollapsed ? 32 : 128}
               height={isCollapsed ? 32 : 48}
               onClick={() => (window.location.href = '/')}
@@ -556,7 +556,7 @@ export const AppSidebar = memo(
             animate={{ opacity: isCollapsed ? 0 : 1 }}
             transition={{ duration: 0.2 }}
           >
-            {!isCollapsed && 'Riddlix v1.0'}
+            {!isCollapsed && 'Riddlit v1.0'}
           </motion.div>
         </SidebarFooter>
       </Sidebar>

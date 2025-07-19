@@ -1,6 +1,6 @@
 /*
 <ai_context>
-Admin subnav component for the Riddlix app.
+Admin subnav component for the Riddlit app.
 Provides hierarchical navigation with indented children for different admin sections.
 Shows current context and view with clean, seamless design.
 </ai_context>

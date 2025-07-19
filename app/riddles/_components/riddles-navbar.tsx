@@ -1,6 +1,6 @@
 /*
 <ai_context>
-Riddles navbar component for the Riddlix app.
+Riddles navbar component for the Riddlit app.
 Provides navigation and actions for the riddles section.
 </ai_context>
 */

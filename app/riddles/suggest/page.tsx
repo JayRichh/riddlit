@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation'
 import { CreateRiddleForm } from '../_components/create-riddle-form'
 
 export const metadata = {
-  title: 'Suggest Riddle | Riddlix',
+  title: 'Suggest Riddle | Riddlit',
   description: 'Submit a riddle suggestion for review by moderators',
 }
 

@@ -5,13 +5,13 @@ import Image from 'next/image'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 
-interface RiddlixLogoProps {
+interface RiddlitLogoProps {
   size?: number
   className?: string
   animate?: boolean
 }
 
-export const RiddlixLogo = ({ size = 400, className = '', animate = false }: RiddlixLogoProps) => {
+export const RiddlitLogo = ({ size = 400, className = '', animate = false }: RiddlitLogoProps) => {
   const { theme, systemTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
@@ -55,7 +55,7 @@ export const RiddlixLogo = ({ size = 400, className = '', animate = false }: Rid
       >
         <Image
           src="/riddix_logo.svg"
-          alt="Riddlix Logo"
+          alt="Riddlit Logo"
           width={size}
           height={size}
           className="h-full w-full object-contain"

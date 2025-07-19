@@ -1,6 +1,6 @@
 /*
 <ai_context>
-Profile navbar component for the Riddlix app.
+Profile navbar component for the Riddlit app.
 Provides navigation and actions for the profile section.
 Updated with notification bell and dark mode toggle.
 </ai_context>

@@ -1,6 +1,6 @@
 {
-  "name": "Riddlix | Challenge Minds. Build Teams. Rise Up.",
-  "short_name": "Riddlix",
+  "name": "Riddlit | Challenge Minds. Build Teams. Rise Up.",
+  "short_name": "Riddlit",
   "description": "Daily team riddles for sharper thinking and smarter teams. Join or create teams, solve challenges, and climb the leaderboard.",
   "start_url": "/",
   "display": "standalone",
@@ -28,7 +28,7 @@
       "type": "image/png"
     },
     {
-      "src": "/riddlix_logo.png",
+      "src": "/riddlit_logo.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -36,7 +36,7 @@
   ],
   "screenshots": [
     {
-      "src": "/riddlix_logo.png",
+      "src": "/riddlit_logo.png",
       "sizes": "1200x630",
       "type": "image/png",
       "form_factor": "wide"
@@ -50,7 +50,7 @@
       "url": "/dashboard",
       "icons": [
         {
-          "src": "/riddlix_logo.png",
+          "src": "/riddlit_logo.png",
           "sizes": "96x96"
         }
       ]
@@ -62,7 +62,7 @@
       "url": "/teams",
       "icons": [
         {
-          "src": "/riddlix_logo.png",
+          "src": "/riddlit_logo.png",
           "sizes": "96x96"
         }
       ]

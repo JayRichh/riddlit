@@ -1,6 +1,6 @@
 /*
 <ai_context>
-Contacts navbar component for the Riddlix app.
+Contacts navbar component for the Riddlit app.
 Provides navigation and actions for the contacts section.
 Updated with notification bell (already has dark mode toggle).
 </ai_context>

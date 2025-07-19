@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 import { AnimatedGradientText } from '@/lib/components/magicui/animated-gradient-text'
 import { Button } from '@/lib/components/ui/button'
-import { RiddlixLogo } from '@/lib/components/ui/riddlix-logo'
+import { RiddlitLogo } from '@/lib/components/ui/riddlit-logo'
 
 export const HeroSection = () => {
   return (
@@ -58,7 +58,7 @@ export const HeroSection = () => {
             </motion.div>
           </div>
 
-          {/* Right: Riddlix Logo */}
+          {/* Right: Riddlit Logo */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -66,7 +66,7 @@ export const HeroSection = () => {
             className="relative flex items-center justify-center"
           >
             <div className="relative">
-              <RiddlixLogo
+              <RiddlitLogo
                 size={420}
                 className="w-full max-w-md lg:max-w-lg xl:max-w-xl"
                 animate={true}

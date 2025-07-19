@@ -1,6 +1,6 @@
 /*
 <ai_context>
-Global breadcrumb navigation component for the Riddlix app.
+Global breadcrumb navigation component for the Riddlit app.
 Provides consistent breadcrumb navigation across all routes with home icon.
 Replaces page titles with proper navigation context.
 </ai_context>

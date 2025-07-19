@@ -1,6 +1,6 @@
 /*
 <ai_context>
-Admin navbar component for the Riddlix app.
+Admin navbar component for the Riddlit app.
 Provides navigation and actions for the admin section.
 Updated with notification bell and dark mode toggle.
 </ai_context>

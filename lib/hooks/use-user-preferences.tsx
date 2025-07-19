@@ -32,7 +32,7 @@ const defaultPreferences: UserPreferences = {
   },
 }
 
-const STORAGE_KEY = 'riddlix-user-preferences'
+const STORAGE_KEY = 'riddlit-user-preferences'
 
 export function useUserPreferences() {
   const [preferences, setPreferences] = useState<UserPreferences>(defaultPreferences)

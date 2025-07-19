@@ -1,6 +1,6 @@
 /*
 <ai_context>
-Leaderboard navbar component for the Riddlix app.
+Leaderboard navbar component for the Riddlit app.
 Provides navigation and actions for the leaderboard section.
 Updated with notification bell and dark mode toggle.
 </ai_context>

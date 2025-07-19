@@ -1,6 +1,6 @@
 /*
 <ai_context>
-Teams navbar component for the Riddlix app.
+Teams navbar component for the Riddlit app.
 Provides navigation and actions for the teams section.
 Updated with notification bell and dark mode toggle.
 </ai_context>

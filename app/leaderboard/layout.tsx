@@ -10,15 +10,15 @@ import { LeaderboardNavbar } from './_components/leaderboard-navbar'
 export const metadata = {
   title: 'Leaderboard',
   description:
-    'View rankings and statistics on Riddlix. Track top performers, team standings, and competitive statistics in our riddle-solving community.',
+    'View rankings and statistics on Riddlit. Track top performers, team standings, and competitive statistics in our riddle-solving community.',
   openGraph: {
     url: 'https://riddl.it/leaderboard',
     images: [
       {
-        url: '/riddlix_logo.png',
+        url: '/riddlit_logo.png',
         width: 1200,
         height: 630,
-        alt: 'Riddlix Leaderboard - Rankings and Statistics',
+        alt: 'Riddlit Leaderboard - Rankings and Statistics',
         type: 'image/png',
       },
     ],

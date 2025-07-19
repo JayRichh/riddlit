@@ -1,6 +1,6 @@
 /*
 <ai_context>
-Dashboard navbar component for the Riddlix app.
+Dashboard navbar component for the Riddlit app.
 Provides navigation and user controls for the dashboard section.
 Updated with notification bell and dark mode toggle.
 </ai_context>
