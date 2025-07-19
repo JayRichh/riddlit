@@ -1,3 +1,4 @@
+// app/teams/_components/team-detail-content.tsx
 /*
 <ai_context>
 Team detail content component that displays team information, members, and management options.
@@ -9,13 +10,26 @@ Handles team member management, join requests, and team settings.
 
 import { useUser } from '@clerk/nextjs'
 import { formatDistanceToNow } from 'date-fns'
-import { Crown, Edit, Globe, Lock, Settings, UserCheck, UserMinus, Users, X } from 'lucide-react'
+import {
+  Crown,
+  Edit,
+  Globe,
+  Lock,
+  Settings,
+  UserCheck,
+  UserMinus,
+  UserPlus,
+  Users,
+  X,
+} from 'lucide-react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { toast } from 'sonner'
 
 import {
   approveJoinRequest,
+  createJoinRequest,
   getTeamJoinRequests,
   rejectJoinRequest,
   removeMemberFromTeam,
@@ -56,6 +70,9 @@ interface TeamDetailContentProps {
 
 export function TeamDetailContent({ team, members }: TeamDetailContentProps) {
   const { user } = useUser()
+  const router = useRouter()
+
+  const [isJoining, setIsJoining] = useState(false)
   const [joinRequests, setJoinRequests] = useState<
     Array<{
       id: string
@@ -70,6 +87,7 @@ export function TeamDetailContent({ team, members }: TeamDetailContentProps) {
   const currentUserMembership = members.find((member) => member.userId === user?.id)
   const isOwner = currentUserMembership?.role === 'owner'
   const isMember = !!currentUserMembership
+  const isFull = team.memberCount >= team.maxMembers
 
   const handleRemoveMember = async (userId: string) => {
     if (!confirm('Are you sure you want to remove this member?')) return
@@ -78,7 +96,7 @@ export function TeamDetailContent({ team, members }: TeamDetailContentProps) {
       const result = await removeMemberFromTeam(team.id, userId)
       if (result.isSuccess) {
         toast.success('Member removed successfully')
-        // In a real app, you'd refresh the data here
+        router.refresh()
       } else {
         toast.error(result.message)
       }
@@ -110,6 +128,7 @@ export function TeamDetailContent({ team, members }: TeamDetailContentProps) {
       if (result.isSuccess) {
         toast.success('Join request approved')
         setJoinRequests((prev) => prev.filter((req) => req.id !== requestId))
+        router.refresh()
       } else {
         toast.error(result.message)
       }
@@ -124,11 +143,29 @@ export function TeamDetailContent({ team, members }: TeamDetailContentProps) {
       if (result.isSuccess) {
         toast.success('Join request rejected')
         setJoinRequests((prev) => prev.filter((req) => req.id !== requestId))
+        router.refresh()
       } else {
         toast.error(result.message)
       }
     } catch {
       toast.error('Failed to reject request')
+    }
+  }
+
+  const handleJoinTeam = async () => {
+    if (isJoining || isFull) return
+    setIsJoining(true)
+    try {
+      const result = await createJoinRequest(team.id)
+      if (result.isSuccess) {
+        toast.success('Join request sent successfully!')
+      } else {
+        toast.error(result.message)
+      }
+    } catch {
+      toast.error('Failed to send join request')
+    } finally {
+      setIsJoining(false)
     }
   }
 
@@ -140,7 +177,7 @@ export function TeamDetailContent({ team, members }: TeamDetailContentProps) {
         onCancel={() => setIsEditing(false)}
         onSuccess={() => {
           setIsEditing(false)
-          // onSuccess will refresh the page
+          router.refresh()
         }}
       />
     )
@@ -169,7 +206,8 @@ export function TeamDetailContent({ team, members }: TeamDetailContentProps) {
               {team.description || 'No description provided'}
             </p>
           </div>
-          {isOwner && (
+
+          {isOwner ? (
             <div className="flex items-center gap-2">
               <Button variant="outline" onClick={() => setIsEditing(true)} className="gap-2">
                 <Edit className="h-4 w-4" />
@@ -185,6 +223,28 @@ export function TeamDetailContent({ team, members }: TeamDetailContentProps) {
                 </Button>
               </Link>
             </div>
+          ) : (
+            !isMember && (
+              <div className="flex items-center gap-2">
+                {isFull ? (
+                  <Badge variant="destructive">Team Full</Badge>
+                ) : (
+                  <Button onClick={handleJoinTeam} disabled={isJoining} className="gap-2">
+                    {isJoining ? (
+                      <>
+                        <div className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                        Joining...
+                      </>
+                    ) : (
+                      <>
+                        <UserPlus className="h-4 w-4" />
+                        Join Team
+                      </>
+                    )}
+                  </Button>
+                )}
+              </div>
+            )
           )}
         </div>
 
