@@ -29,10 +29,11 @@ export default function robots(): MetadataRoute.Robots {
           '/dashboard/', // Block private dashboard
           '/profile/', // Block private profile pages
           '/contacts/', // Block private contacts
-          '/login/', // Block auth pages
-          '/signup/', // Block auth pages
           '/riddles/create', // Block creation pages (require auth)
           '/teams/create', // Block creation pages (require auth)
+          '/riddles/*/edit', // Block edit pages
+          '/teams/*/edit', // Block edit pages
+          '/riddles/*/solve', // Block solve pages (require auth)
         ],
         crawlDelay: 1, // Be respectful to server
       },
@@ -48,10 +49,11 @@ export default function robots(): MetadataRoute.Robots {
           '/dashboard/',
           '/profile/',
           '/contacts/',
-          '/login/',
-          '/signup/',
           '/riddles/create',
           '/teams/create',
+          '/riddles/*/edit',
+          '/teams/*/edit',
+          '/riddles/*/solve',
         ],
         // No crawl delay for Google
       },
@@ -73,10 +75,11 @@ export default function robots(): MetadataRoute.Robots {
           '/dashboard/',
           '/profile/',
           '/contacts/',
-          '/login/',
-          '/signup/',
           '/riddles/create',
           '/teams/create',
+          '/riddles/*/edit',
+          '/teams/*/edit',
+          '/riddles/*/solve',
         ],
         crawlDelay: 2,
       },

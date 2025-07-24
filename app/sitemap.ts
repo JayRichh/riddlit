@@ -3,6 +3,7 @@ import { MetadataRoute } from 'next'
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.riddl.it'
 
+  // Only include pages that are publicly accessible without authentication
   return [
     // Homepage - Highest Priority
     {
@@ -12,27 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
 
-    // Auth Pages
-    {
-      url: `${baseUrl}/login`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/signup`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-
-    // Main App Pages - High Priority
-    {
-      url: `${baseUrl}/dashboard`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
+    // Main Public Pages - High Priority
     {
       url: `${baseUrl}/riddles`,
       lastModified: new Date(),
@@ -52,20 +33,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
 
-    // Create Pages
-    {
-      url: `${baseUrl}/riddles/create`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/teams/create`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-
     // Leaderboard Sub-pages
     {
       url: `${baseUrl}/leaderboard/teams`,
@@ -80,52 +47,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
 
-    // Profile Pages
+    // Auth Pages (lower priority, but still public for user access)
     {
-      url: `${baseUrl}/profile`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/profile/settings`,
+      url: `${baseUrl}/login`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.5,
     },
-
-    // Contacts Page
     {
-      url: `${baseUrl}/contacts`,
+      url: `${baseUrl}/signup`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.6,
-    },
-
-    // Admin Pages (lower priority as they're restricted)
-    {
-      url: `${baseUrl}/admin`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.4,
-    },
-    {
-      url: `${baseUrl}/admin/analytics`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/admin/approved`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/admin/rejected`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.3,
+      changeFrequency: 'monthly',
+      priority: 0.5,
     },
   ]
 }
